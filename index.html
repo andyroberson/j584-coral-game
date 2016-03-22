@@ -107,7 +107,7 @@
         controlsMenu.addChild(foodButton);
         stage.update();
 
-//section for drag and drop food
+//section for drag and drop food***********************************************
 
         //highlight foodButton when hovered not accessing mouseover?
         foodButton.addEventListener("mouseover", function (evt) {
@@ -143,12 +143,14 @@
     function makeNewFood() {
         console.log("We're at the make new food function");
         //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
-        newFood = new createjs.Bitmap("test-shrimp.jpg");
+        newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
         newFood.crossOrigin="Anonymous";
         newFood.x = 40;
         newFood.y = 40;
         //newFood = new createjs.Shape();
         //newFood.graphics.beginFill("blue").drawCircle(0, 0, 20);
+
+        //TODO - DRAGGABILITY isn't working right now?
         makeDraggable(newFood);
         tankContainer.addChild(newFood);
         stage.update();
@@ -179,18 +181,29 @@
           newFood.y += ((yP - newFood.y)/60);
 
           stage.update();
-          testCollision(coral,newFood);
+          //test collision between coral and newFood ; if collide is true, the coral "ate" the food
+          foodCollision = testCollision(coral,newFood);
+          if (foodCollision == true) {
+            //console.log("the food is colliding");
+            //remove food because it got eaten
+            tankContainer.removeChild(newFood);
+            console.log("food is removed");
+            //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
+            stage.update();
+          }
+
     }
 
-    //tests intersection
+    //tests intersection between two images
     function testCollision(img1, img2) {
-      var intersection = ndgmr.checkRectCollision(coral,newFood);
+      var intersection = ndgmr.checkRectCollision(img1, img2);
 
       if (intersection != null) {
-        console.log("It's intersecting!!!!");
+        //if the intersection isn't null, it means it's interesecing
+        //console.log("It's intersecting!!!!");
+        return true;
         //Remove or delete newFood on intersection, make coral more happy
       }
-
     }
 
   }
