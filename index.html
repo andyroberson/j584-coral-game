@@ -138,7 +138,8 @@
     //how to rename newFood each time so that it will keep making it randomly move each time
     //maybe create an array to add these shapes into? and when newFood intersects with coral, detect
     //which # in the array it's in and remove that one? but would that help with keeping them all moving?
-    counter = 0;
+    //counter = 0;
+    newFoodTest = new createjs.Bitmap("test-shrimp.jpg");
     function makeNewFood() {
         console.log("We're at the make new food function");
         //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
@@ -151,6 +152,7 @@
         makeDraggable(newFood);
         tankContainer.addChild(newFood);
         stage.update();
+        //testCollision(coral,newFood);
     }
 
     //Update stage will render next frame this is for animating food
@@ -177,14 +179,22 @@
           newFood.y += ((yP - newFood.y)/60);
 
           stage.update();
+          testCollision(coral,newFood);
     }
 
-    console.log("hello?")
-    var intersection = ndgmr.checkRectCollision(coral, newFood);
-    console.log("the interseciton is " + intersection);
-    console.log(ndgmr.checkRectCollision(coral,newFood));
-  //end init function
+    //tests intersection
+    function testCollision(img1, img2) {
+      var intersection = ndgmr.checkRectCollision(coral,newFood);
+
+      if (intersection != null) {
+        console.log("It's intersecting!!!!");
+        //Remove or delete newFood on intersection, make coral more happy
+      }
+
+    }
+
   }
+//end init function
 
 //make things draggable
 function makeDraggable(o) {
