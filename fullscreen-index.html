@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="easeljs-0.8.2.min.js"></script>
+    <script>
+    	var stage;
+
+    	window.addEventListener('resize', resize, false);
+
+    	function init() {
+    		stage = new createjs.Stage("demoCanvas");
+
+        createBackground();
+        createLogo();
+        createContent();
+
+        createjs.Ticker.addListener(this);
+    		resize();
+
+
+    	}
+
+      function createBackground() {
+        	bg = new createjs.Shape();
+        	stage.addChild(bg);
+      }
+
+      function createLogo() {
+
+        	logo = new createjs.Bitmap("logo.png");
+        	logo.y = 10;
+        	stage.addChild(logo);
+
+        }
+
+        function createContent() {
+
+	         content = new createjs.Container();
+	          stage.addChild(content);
+
+	// Load the Monalisa Image
+	// (You may also use PreloadJS to avoid the onload listener)
+	monalisa = new Image();
+	monalisa.src = "mona-lisa_square.jpg";
+	monalisa.onload = handleImageLoad;
+}
+
+function handleImageLoad() {
+
+	// Create a CreateJS bitmap from the loaded image
+	var bmpMonaLisa = new createjs.Bitmap(monalisa);
+
+	// Add the bitmap to the Container
+	content.addChild(bmpMonaLisa);
+
+	// Set the registration point of the Container
+	content.regX = bmpMonaLisa.image.width/2
+	content.regY = bmpMonaLisa.image.height/2
+
+	// Set the scale of the content.
+	// It's not necessary but it might be useful to properly handle different mobile resolutions resizing the content.
+	content.scaleX = 0.5;
+	content.scaleY = 0.5;
+
+}
+
+
+    	function tick() {
+    		stage.update();
+    	}
+
+    	function resize() {
+        // Resize the canvas element
+        stage.canvas.width = window.innerWidth;
+        stage.canvas.height = window.innerHeight;
+
+        // Logo: top-right position (canvasWidth - image width - 10 px padding)
+        logo.x = stage.canvas.width - logo.image.width - 120 - 10;
+
+        // Background: full screen redraw
+        bg.graphics.clear()
+        bg.graphics.beginFill("#222").drawRect(0,0,stage.canvas.width,stage.canvas.height);
+
+        content.x = stage.canvas.width / 2;
+        content.y = stage.canvas.height / 2;
+    	}
+
+    </script>
+    <style>
+    body {
+      background: #eee;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    /*tank canvas; what every part of the game is contained in*/
+    #tankCanvas {
+      margin-left: auto;
+      margin-right: auto;
+      display: inline-block;
+      background: #7BAFD4;
+      margin-bottom: 0;
+    }
+
+    /*where controls for light, etc are contained
+    #controls {
+      background: #856363;
+      width: 600px;
+      height: 100px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -4px;
+    }*/
+
+    </style>
+  </head>
+  <body onLoad="init();">
+    <canvas id="demoCanvas" width="300" height="100"  >
+
+      alternate content
+
+    </canvas>
+  </body>
+
+</html>
