@@ -17,6 +17,7 @@ var menuHeight;
 var tankHeight;
 var controlsMenu;
 var tankContainer;
+var coral;
 
 var foodArr = [];
 
@@ -44,7 +45,7 @@ var foodArr = [];
 
 //creating coral
     //TODO - center bitmap later!
-    var coral = new createjs.Bitmap("coral-test2.png");
+     coral = new createjs.Bitmap("coral-test2.png");
         coral.crossOrigin="Anonymous";
         coral.x = 170;
         coral.y = 190;
@@ -80,143 +81,32 @@ var foodArr = [];
         console.log("control width is " + thecontrols.width);
         thecontrols.setBounds(thecontrols.x, thecontrols.y, thecontrols.height, thecontrols.width);
 
-    //creating food button
-    var foodButton = new createjs.Shape().set({cursor: "pointer"});
-
-        foodButton.graphics.beginFill("Orange").drawCircle(0, 0, 20);
-        foodButton.x = w / 6;
-        foodButton.y = menuHeight / 2;
-        foodButton.width = w / 6;
-        foodButton.height = menuHeight / 2;
-        foodButton.setBounds(foodButton.x, foodButton.y, foodButton.height, foodButton.width);
-
-
-  //  //setting up light controls
-  //  var lightControls = new createjs.Shape();
-  //      lightControls.graphics.beginFill("Purple").drawRect(0, 0, (w/6), (menuHeight / 2));
-  //      lightControls.x = w / 2;
-  //      lightControls.y = menuHeight / 4;
-  //      lightControls.width = w / 6;
-  //      lightControls.height = menuHeight / 4;
-  //      lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
-
-
 
     //setting up initial tank layout
     stage.addChild(coral);
     stage.addChild(controlsMenu);
     stage.addChild(tankContainer);
-    // stage.addChild(light);
     controlsMenu.addChild(thecontrols);
-    controlsMenu.addChild(foodButton);
-    // controlsMenu.addChild(lightControls);
+
     stage.update();
 
-    //createLight(); //how to do
-//section for drag and drop food***********************************************
+    createFood();
+    createLight();
+}
+//end init function
 
-    //highlight foodButton when hovered not accessing mouseover?
-    foodButton.addEventListener("mouseover", function (evt) {
-      foodButton.graphics.clear().beginFill("Red").drawCircle(0, 0, 20).endFill();
-      foodButton.x = w / 6;
-      foodButton.y = menuHeight / 2;
-      console.log("food button is hovered");
-      stage.update();
+//make things draggable make anything draggable with makeDraggable(yourItemHere);
+function makeDraggable(o) {
+    o.addEventListener("pressmove", function (evt) {
+        evt.currentTarget.x = evt.stageX;
+        evt.currentTarget.y = evt.stageY;
+        o.getStage().update();
+        console.log("Being dragged");
+
+        //TODO - if food is Being dragged, random motion should not be happening
     });
-
-    //when not hovered, remove the highlight
-    foodButton.addEventListener("mouseout", function (evt) {
-      foodButton.graphics.clear().beginFill("Orange").drawCircle(0, 0, 20).endFill();
-      foodButton.x = w / 6;
-      foodButton.y = menuHeight / 2;
-      console.log("food button isn't hovered");
-      stage.update();
-    });
-
-    //when the mouse is clicked, make a new food instance and make this draggable
-    foodButton.addEventListener("mousedown", function (evt) {
-    if (evt.nativeEvent.button >= 0) {
-        makeNewFood();
-    }
-    stage.update();
-});
-
-//how to rename newFood each time so that it will keep making it randomly move each time
-//maybe create an array to add these shapes into? and when newFood intersects with coral, detect
-//which # in the array it's in and remove that one? but would that help with keeping them all moving?
-//counter = 0;
-
-function makeNewFood() {
-    foodArr.push(new createjs.Bitmap("test-shrimp.jpg"));
-    console.log("We're at the make new food function");
-
-    //newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
-
-    //foodArr.push(newFood);
-    // newFood.crossOrigin="Anonymous";
-    // newFood.x = 40;
-    // newFood.y = 40;
-    //newFood = new createjs.Shape();
-    //newFood.graphics.beginFill("blue").drawCircle(0, 0, 20);
-
-    for (var i = 0; i < foodArr; i ++) {
-      foodArr[i].x = 40;
-      foodArr[i].y = 40;
-    }
-    console.log(foodArr[i].x);
-
-    makeDraggable(foodArr[i]);
-    tankContainer.addChild(foodArr[i]);
-    stage.update();
-    //testCollision(coral,newFood);
 }
 
-//Update stage will render next frame this is for animating food
-createjs.Ticker.framerate = 40;
-createjs.Ticker.addEventListener("tick", moveFood);
-//createjs.Ticker.on("tick", foodIntersect);
-
-//makes food move randomly
-function moveFood() {
-
-  //TODO - make this only work if mousedown on newFood is false
-      if(tick > 100) {
-        xT = Math.ceil(Math.random()* w);
-        yT = Math.ceil(Math.random()* h * 4/5);
-        tick = 0;
-      }
-
-        tick++;
-
-        xP += (xT - xP)/15;
-        yP += (yT - yP)/15;
-
-      for (var i = 0; i < foodArr.length; i++) {
-          foodArr[i].x += ((xP - foodArr[i].x)/60);
-          foodArr[i].y += ((yP - foodArr[i].y)/60);
-          stage.update();
-          // console.log("in food array?");
-
-          foodCollision = testCollision(coral,foodArr[i]);
-          if (foodCollision == true) {
-            //console.log("the food is colliding");
-            //remove food because it got eaten
-            tankContainer.removeChild(foodArr[i]);
-            foodArr.splice(foodArr[i], 1);
-            console.log("food is removed");
-            //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
-            stage.update();
-          }
-      }
-
-      //test collision between coral and newFood ; if collide is true, the coral "ate" the food
-
-
-      //IF food.x is within the x + width of coral then remove food
-
-}
-
-//tests intersection between two images
 function testCollision(img1, img2) {
   var intersection = ndgmr.checkRectCollision(img1, img2);
 
@@ -224,23 +114,8 @@ function testCollision(img1, img2) {
     //if the intersection isn't null, it means it's interesecing
     //console.log("It's intersecting!!!!");
     return true;
-    //Remove or delete newFood on intersection, make coral more happy
+    //Remove or delete Food on intersection, make coral more happy
   }
-}
-    createLight();
-}
-//end init function
-
-//make things draggable make anything draggable with makeDraggable(yourItemHere);
-function makeDraggable(o) {
-o.addEventListener("pressmove", function (evt) {
-    evt.currentTarget.x = evt.stageX;
-    evt.currentTarget.y = evt.stageY;
-    o.getStage().update();
-    console.log("Being dragged");
-
-    //TODO - if food is Being dragged, random motion should not be happening
-});
 }
 
 // TO DO - make food only droppable in the tankContainer ; (target example?)
