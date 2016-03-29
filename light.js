@@ -2,23 +2,59 @@
 
 function createLight() {
 //setting up light controls
-var lightControls = new createjs.Shape();
+var lightControlOff = new createjs.Shape();
 
-    lightControls.graphics.beginFill("Purple").drawRect(0, 0, (w/6), (menuHeight / 2));
-    lightControls.x = w / 2;
-    lightControls.y = menuHeight / 4;
-    lightControls.width = w / 6;
-    lightControls.height = menuHeight / 4;
-    lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
-    console.log(lightControls.x);
+    lightControlOff.graphics.beginFill("Purple").drawRect(-150, 0, (w/6), (menuHeight / 2));
+    lightControlOff.x = w / 2;
+    lightControlOff.y = menuHeight / 4;
+    lightControlOff.width = w / 6;
+    lightControlOff.height = menuHeight / 4;
+    lightControlOff.setBounds(lightControlOff.x, lightControlOff.y, lightControlOff.height, lightControlOff.width);
+    console.log(lightControlOff.x);
     makeLight();
 
     function makeLight() {
-      controlsMenu.addChild(lightControls);
+      controlsMenu.addChild(lightControlOff);
+      stage.update();
+    }
+
+var lightControlDim = new createjs.Shape();
+
+    lightControlDim.graphics.beginFill("Green").drawRect(0, 0, (w/6), (menuHeight / 2));
+    lightControlDim.x = w / 2;
+    lightControlDim.y = menuHeight / 4;
+    lightControlDim.width = w / 6;
+    lightControlDim.height = menuHeight / 4;
+    lightControlDim.setBounds(lightControlDim.x, lightControlDim.y, lightControlDim.height, lightControlDim.width);
+    console.log(lightControlDim.x);
+    makeLight();
+
+    function makeLight() {
+      controlsMenu.addChild(lightControlOff);
+      controlsMenu.addChild(lightControlDim);
+      stage.update();
+    }
+
+var lightControlDark = new createjs.Shape();
+
+    lightControlDark.graphics.beginFill("Yellow").drawRect(150, 0, (w/6), (menuHeight / 2));
+    lightControlDark.x = w / 2;
+    lightControlDark.y = menuHeight / 4;
+    lightControlDark.width = w / 6;
+    lightControlDark.height = menuHeight / 4;
+    lightControlDark.setBounds(lightControlDark.x, lightControlDark.y, lightControlDark.height, lightControlDark.width);
+    console.log(lightControlDark.x);
+    makeLight();
+
+    function makeLight() {
+      controlsMenu.addChild(lightControlOff);
+      controlsMenu.addChild(lightControlDim);
+      controlsMenu.addChild(lightControlDark);
       stage.update();
     }
 
 var light = new createjs.Bitmap("assets/cone.png");
+    light.alpha = .5;
     light.x = 190;
     light.y = 0;
     light.width = (h/5);
@@ -35,9 +71,8 @@ light.image.onload = function() {
   console.log("the image loaded");
 };
 
-// NEEDS TO GO IN GAME.JS
-//when the mouse is clicked, make a new light image
-lightControls.addEventListener("mousedown", function (evt) {
+//when the mouse is clicked, make light turn off
+lightControlOff.addEventListener("mousedown", function (evt) {
   console.log("Hi");
 if (evt.nativeEvent.button === 0) {
   console.log("hi again");
@@ -46,18 +81,25 @@ if (evt.nativeEvent.button === 0) {
  stage.update();
 });
 
-//stage.update();
 
-function brightenLight() {
-    console.log("We're at the brighten light function");
-
-     var brightLight = new createjs.Bitmap("assets/empty-cone.png"); //add to array; when deleted, POP it
-
-    brightLight.x = 290;
-    brightLight.y = 0;
-
-    stage.update();
-    tankContainer.addChild(brightLight);
-    stage.update();
+//when the mouse is clicked, make light dim
+lightControlDim.addEventListener("mousedown", function (evt) {
+  console.log("Hi");
+if (evt.nativeEvent.button === 0) {
+  console.log("hi again");
+    light.alpha = .5;
 }
+ stage.update();
+});
+
+//when the mouse is clicked, make light bright
+lightControlDark.addEventListener("mousedown", function (evt) {
+  console.log("Hi");
+if (evt.nativeEvent.button === 0) {
+  console.log("hi again");
+    light.alpha = 1;
+}
+ stage.update();
+});
+
 }
