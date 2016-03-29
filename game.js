@@ -10,11 +10,21 @@ var dirX = 1;
 var dirY = 1;
 
 
+var stage;
+var w;
+var h;
+var menuHeight;
+var tankHeight;
+var controlsMenu;
+var tankContainer;
+
 var foodArr = [];
+
 //how to add functionality to this???
 
   function init() {
-    var stage = new createjs.Stage("tankCanvas");
+    console.log("init");
+    stage = new createjs.Stage("tankCanvas");
 
     // grab canvas width and height for later calculations:
     w = stage.canvas.width;
@@ -23,7 +33,7 @@ var foodArr = [];
     console.log("width is " + w + " height is " + h);
 
     //creating a tank container because coral and food need bounds
-    var tankContainer = new createjs.Container();
+    tankContainer = new createjs.Container();
         tankContainer.x = 0;
         tankContainer.y = 0;
         tankContainer.width = w;
@@ -50,22 +60,8 @@ var foodArr = [];
       stage.update();
     };
 
-    //for when coral was a shape; will it still be responsive in above?
-    // var coral = new createjs.Shape();
-    //     coral.graphics.beginFill("DarkRed").drawCircle(0, 0, h/10);
-    //     //resetting x and y coordinates with w and h; first must be declared 0 above though
-    //     coral.x = w / 2;
-    //     coral.y = h / 2;
-    //     coral.width = (h/5);
-    //     coral.height = (h/5);
-    //     coral.setBounds(coral.x, coral.y, coral.width, coral.height);
-    //     //setbounds x, y, w, h
-    //     coralBounds = coral.getBounds();
-    //     coralHeight = coral.height;
-    //     console.log("coral bounds is " + coralBounds + " coralHeight is  " + coralHeight);
-
      //creating controls menu container
-    var controlsMenu = new createjs.Container();
+   controlsMenu = new createjs.Container();
         controlsMenu.x = 0;
         controlsMenu.y = (h*(4/5));
         controlsMenu.width = w;
@@ -95,14 +91,14 @@ var foodArr = [];
         foodButton.setBounds(foodButton.x, foodButton.y, foodButton.height, foodButton.width);
 
 
-   //setting up light controls
-   var lightControls = new createjs.Shape();
-       lightControls.graphics.beginFill("Purple").drawRect(0, 0, (w/6), (menuHeight / 2));
-       lightControls.x = w / 2;
-       lightControls.y = menuHeight / 4;
-       lightControls.width = w / 6;
-       lightControls.height = menuHeight / 4;
-       lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
+  //  //setting up light controls
+  //  var lightControls = new createjs.Shape();
+  //      lightControls.graphics.beginFill("Purple").drawRect(0, 0, (w/6), (menuHeight / 2));
+  //      lightControls.x = w / 2;
+  //      lightControls.y = menuHeight / 4;
+  //      lightControls.width = w / 6;
+  //      lightControls.height = menuHeight / 4;
+  //      lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
 
 
 
@@ -113,9 +109,10 @@ var foodArr = [];
     // stage.addChild(light);
     controlsMenu.addChild(thecontrols);
     controlsMenu.addChild(foodButton);
-    controlsMenu.addChild(lightControls);
+    // controlsMenu.addChild(lightControls);
     stage.update();
 
+    //createLight(); //how to do
 //section for drag and drop food***********************************************
 
     //highlight foodButton when hovered not accessing mouseover?
@@ -230,7 +227,7 @@ function testCollision(img1, img2) {
     //Remove or delete newFood on intersection, make coral more happy
   }
 }
-
+    createLight();
 }
 //end init function
 
