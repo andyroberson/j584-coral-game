@@ -110,6 +110,7 @@ var food = [];
     stage.addChild(coral);
     stage.addChild(controlsMenu);
     stage.addChild(tankContainer);
+    stage.addChild(light);
     controlsMenu.addChild(thecontrols);
     controlsMenu.addChild(foodButton);
     controlsMenu.addChild(lightControls);
@@ -147,11 +148,12 @@ var food = [];
 //maybe create an array to add these shapes into? and when newFood intersects with coral, detect
 //which # in the array it's in and remove that one? but would that help with keeping them all moving?
 //counter = 0;
-newFoodTest = new createjs.Bitmap("test-shrimp.jpg");
+
 function makeNewFood() {
     console.log("We're at the make new food function");
     //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
     newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
+    //foodArr.push(newFood);
     newFood.crossOrigin="Anonymous";
     newFood.x = 40;
     newFood.y = 40;
