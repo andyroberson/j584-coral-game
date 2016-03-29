@@ -1,3 +1,5 @@
+// python -m SimpleHTTPServer 8080 -- terminal syntax for testing on a server THANKS LINDSAY!!!
+
 //variables for making food move
 var tick = 0;
 var xP = 50;
@@ -93,12 +95,24 @@ var food = [];
         foodButton.setBounds(foodButton.x, foodButton.y, foodButton.height, foodButton.width);
 
 
+   //setting up light controls
+   var lightControls = new createjs.Shape();
+       lightControls.graphics.beginFill("Purple").drawRect(0, 0, (w/6), (menuHeight / 2));
+       lightControls.x = w / 2;
+       lightControls.y = menuHeight / 4;
+       lightControls.width = w / 6;
+       lightControls.height = menuHeight / 4;
+       lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
+
+
+
     //setting up initial tank layout
     stage.addChild(coral);
     stage.addChild(controlsMenu);
     stage.addChild(tankContainer);
     controlsMenu.addChild(thecontrols);
     controlsMenu.addChild(foodButton);
+    controlsMenu.addChild(lightControls);
     stage.update();
 
 //section for drag and drop food***********************************************
@@ -186,6 +200,8 @@ function moveFood() {
         stage.update();
       }
 
+      //IF food.x is within the x + width of coral then remove food
+
 }
 
 //tests intersection between two images
@@ -209,11 +225,13 @@ o.addEventListener("pressmove", function (evt) {
     evt.currentTarget.x = evt.stageX;
     evt.currentTarget.y = evt.stageY;
     o.getStage().update();
+    console.log("Being dragged");
+
+    //TODO - if food is Being dragged, random motion should not be happening
 });
 }
 
 // TO DO - make food only droppable in the tankContainer ; (target example?)
-//make food move randomly
 //when there's a collision with coral, make coral happiness
 //add happiness to coral
 //(make coral happiness in the end get only to a certain color)
