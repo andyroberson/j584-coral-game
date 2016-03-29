@@ -14,6 +14,18 @@ light.image.onload = function() {
   stage.update();
 };
 
+
+//NEEDS TO GO IN GAME.JS 
+// //when the mouse is clicked, make a new light image
+// lightControls.addEventListener("mousedown", function (evt) {
+//   console.log("Hi");
+// if (evt.nativeEvent.button === 0) {
+//   console.log("hi again");
+//     light.alpha = 0
+// }
+// stage.update();
+// });
+//
 // function brightenLight() {
 //     console.log("We're at the brighten light function");
 //     //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
@@ -27,13 +39,3 @@ light.image.onload = function() {
 //     tankContainer.addChild(brightLight);
 //     stage.update();
 // }
-//
-//
-// // when the mouse is clicked, make a new light instance and make this draggable
-// lightControls.addEventListener("mousedown", function (evt) {
-//   console.log("Hi");
-// if (evt.nativeEvent.button >= 0) {
-//     brightenLight();
-// }
-// stage.update();
-// });
