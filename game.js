@@ -10,7 +10,7 @@ var dirX = 1;
 var dirY = 1;
 
 
-var food = [];
+var foodArr = [];
 //how to add functionality to this???
 
   function init() {
@@ -110,7 +110,7 @@ var food = [];
     stage.addChild(coral);
     stage.addChild(controlsMenu);
     stage.addChild(tankContainer);
-    stage.addChild(light);
+    // stage.addChild(light);
     controlsMenu.addChild(thecontrols);
     controlsMenu.addChild(foodButton);
     controlsMenu.addChild(lightControls);
@@ -150,19 +150,26 @@ var food = [];
 //counter = 0;
 
 function makeNewFood() {
+    foodArr.push(new createjs.Bitmap("test-shrimp.jpg"));
     console.log("We're at the make new food function");
-    //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
-    newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
+
+    //newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
+
     //foodArr.push(newFood);
-    newFood.crossOrigin="Anonymous";
-    newFood.x = 40;
-    newFood.y = 40;
+    // newFood.crossOrigin="Anonymous";
+    // newFood.x = 40;
+    // newFood.y = 40;
     //newFood = new createjs.Shape();
     //newFood.graphics.beginFill("blue").drawCircle(0, 0, 20);
 
-    //TODO - DRAGGABILITY isn't working right now?
-    makeDraggable(newFood);
-    tankContainer.addChild(newFood);
+    for (var i = 0; i < foodArr; i ++) {
+      foodArr[i].x = 40;
+      foodArr[i].y = 40;
+    }
+    console.log(foodArr[i].x);
+
+    makeDraggable(foodArr[i]);
+    tankContainer.addChild(foodArr[i]);
     stage.update();
     //testCollision(coral,newFood);
 }
@@ -187,20 +194,26 @@ function moveFood() {
         xP += (xT - xP)/15;
         yP += (yT - yP)/15;
 
-      newFood.x += ((xP - newFood.x)/60);
-      newFood.y += ((yP - newFood.y)/60);
+      for (var i = 0; i < foodArr.length; i++) {
+          foodArr[i].x += ((xP - foodArr[i].x)/60);
+          foodArr[i].y += ((yP - foodArr[i].y)/60);
+          stage.update();
+          // console.log("in food array?");
 
-      stage.update();
-      //test collision between coral and newFood ; if collide is true, the coral "ate" the food
-      foodCollision = testCollision(coral,newFood);
-      if (foodCollision == true) {
-        //console.log("the food is colliding");
-        //remove food because it got eaten
-        tankContainer.removeChild(newFood);
-        console.log("food is removed");
-        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
-        stage.update();
+          foodCollision = testCollision(coral,foodArr[i]);
+          if (foodCollision == true) {
+            //console.log("the food is colliding");
+            //remove food because it got eaten
+            tankContainer.removeChild(foodArr[i]);
+            foodArr.splice(foodArr[i], 1);
+            console.log("food is removed");
+            //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
+            stage.update();
+          }
       }
+
+      //test collision between coral and newFood ; if collide is true, the coral "ate" the food
+
 
       //IF food.x is within the x + width of coral then remove food
 
