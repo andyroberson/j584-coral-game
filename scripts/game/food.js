@@ -17,9 +17,6 @@ function createFood() {
         stage.update();
   }
 
-
-
-
 //highlight foodButton when hovered not accessing mouseover?
 foodButton.addEventListener("mouseover", function (evt) {
   foodButton.graphics.clear().beginFill("Red").drawCircle(0, 0, 20).endFill();
@@ -52,7 +49,7 @@ stage.update();
 //counter = 0;
 
 function makeNewFood() {
-foodArr.push(new createjs.Bitmap("test-shrimp.jpg"));
+foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
 console.log("We're at the make new food function");
 
 //newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it

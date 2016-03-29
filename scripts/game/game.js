@@ -45,7 +45,7 @@ var foodArr = [];
 
 //creating coral
     //TODO - center bitmap later!
-     coral = new createjs.Bitmap("coral-test2.png");
+     coral = new createjs.Bitmap("assets/coral-test2.png");
         coral.crossOrigin="Anonymous";
         coral.x = 170;
         coral.y = 190;
