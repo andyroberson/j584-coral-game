@@ -105,6 +105,7 @@ var foodArr = [];
        lightControls.setBounds(lightControls.x, lightControls.y, lightControls.height, lightControls.width);
 
 
+
     //setting up initial tank layout
     stage.addChild(coral);
     stage.addChild(controlsMenu);
@@ -173,30 +174,6 @@ function makeNewFood() {
     //testCollision(coral,newFood);
 }
 
-// //when the mouse is clicked, make a new light image
-// lightControls.addEventListener("mousedown", function (evt) {
-//   console.log("Hi");
-// if (evt.nativeEvent.button === 0) {
-//   console.log("hi again");
-//     light.alpha = 0
-// }
-// stage.update();
-// });
-//
-// function brightenLight() {
-//     console.log("We're at the brighten light function");
-//     //when newFood is an image, it wont let you create multiple ones; need to store in array and rename or something
-//     var brightLight = new createjs.Bitmap("assets/empty-cone.png"); //add to array; when deleted, POP it
-//     //foodArr.push(newFood);
-//     brightLight.x = 290;
-//     brightLight.y = 0;
-//     //newFood = new createjs.Shape();
-//     //newFood.graphics.beginFill("blue").drawCircle(0, 0, 20);
-//     stage.update();
-//     tankContainer.addChild(brightLight);
-//     stage.update();
-// }
-
 //Update stage will render next frame this is for animating food
 createjs.Ticker.framerate = 40;
 createjs.Ticker.addEventListener("tick", moveFood);
@@ -241,7 +218,6 @@ function moveFood() {
       //IF food.x is within the x + width of coral then remove food
 
 }
-
 
 //tests intersection between two images
 function testCollision(img1, img2) {
