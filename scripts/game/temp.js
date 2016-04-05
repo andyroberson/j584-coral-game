@@ -28,24 +28,36 @@ function createTemp() {
   var tempScreen = new createjs.Shape();
   tempBackground.graphics.beginFill("Navy").drawRect(screenContainer.x, screenContainer.y, screenWidth, screenHeight);
 
-  var upArrow = new createjs.Shape();
+
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
+  var upArrow = new createjs.Shape();
   upArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(1/3)), (tempWidth*(1/10)), 3, 0, -90);
 
   var downArrow = new createjs.Shape();
   downArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(2/3)), (tempWidth*(1/10)), 3, 0, 90);
+
+  var temperature = new createjs.Text();
+
+  var degrees = "70 F";
+
+  temperature.text = (degrees);
+  temperature.color = "white";
+  temperature.font = "20px arial";
+  temperature.x = (screenWidth / 4);
+  temperature.y = (screenHeight / 3);
 
 
   makeTemp();
 
   function makeTemp() {
         stage.addChild(tempContainer);
-        tempContainer.addChild(tempBackground)
+        tempContainer.addChild(tempBackground);
         tempContainer.addChild(screenContainer);
         tempContainer.addChild(upArrow);
         tempContainer.addChild(downArrow);
         screenContainer.addChild(tempScreen);
+        screenContainer.addChild(temperature);
         stage.update();
   }
 }
