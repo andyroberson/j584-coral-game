@@ -92,6 +92,7 @@ var foodArr = [];
 
     createFood();
     createLight();
+    createTemp();
 }
 //end init function
 
