@@ -16,10 +16,10 @@ function createTemp() {
 
 
   var screenContainer = new createjs.Container();
-  screenContainer.x = (tempWidth / 3);
-  screenContainer.y = (tempHeight / 3);
-  screenContainer.width = (tempWidth / 3);
-  screenContainer.height = (tempHeight / 3);
+  screenContainer.x = (tempWidth * (1/4));
+  screenContainer.y = (tempHeight * (1/4));
+  screenContainer.width = (tempWidth * (2/5));
+  screenContainer.height = (tempHeight * (2/4));
   screenHeight = screenContainer.height;
   screenWidth = screenContainer.width;
   screenContainer.setBounds(screenContainer.x, screenContainer.y, screenContainer.width, screenContainer.height);
@@ -28,12 +28,23 @@ function createTemp() {
   var tempScreen = new createjs.Shape();
   tempBackground.graphics.beginFill("Navy").drawRect(screenContainer.x, screenContainer.y, screenWidth, screenHeight);
 
+  var upArrow = new createjs.Shape();
+  //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
+  //drawPolyStar(x, y, radius, sides, pointsize, angle)
+  upArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(1/3)), (tempWidth*(1/10)), 3, 0, -90);
+
+  var downArrow = new createjs.Shape();
+  downArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(2/3)), (tempWidth*(1/10)), 3, 0, 90);
+
+
   makeTemp();
 
   function makeTemp() {
         stage.addChild(tempContainer);
         tempContainer.addChild(tempBackground)
         tempContainer.addChild(screenContainer);
+        tempContainer.addChild(upArrow);
+        tempContainer.addChild(downArrow);
         screenContainer.addChild(tempScreen);
         stage.update();
   }
