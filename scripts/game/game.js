@@ -93,6 +93,10 @@ var foodArr = [];
     createFood();
     createLight();
     createTemp();
+    //createCoral();
+    //createCarbon();
+
+    //TODO - change the above create functions to START? 
 }
 //end init function
 

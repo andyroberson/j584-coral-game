@@ -37,6 +37,18 @@ function createTemp() {
   var downArrow = new createjs.Shape();
   downArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(2/3)), (tempWidth*(1/10)), 3, 0, 90);
 
+
+  //increasing or decreasing the temperature
+  // upArrow.addEventListener("pressmove", function (evt) {
+  //   detect what degrees currently is, for each click of the up arrow, increase degrees by .1
+  //   is a for loop needed?
+  //   variable detecting num clicks? for each click decrease? first just try decreasing / updating degrees
+  // }
+  //
+  // downArrow.addEventListener("pressmove", function (evt) {
+  //   detect what degrees currently is, for each click of the down arrow, decrease degrees by .1
+  // }
+
   var temperature = new createjs.Text();
 
   var degrees = "70 F";
