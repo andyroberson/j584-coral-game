@@ -28,30 +28,32 @@ function createTemp() {
   var tempScreen = new createjs.Shape();
   tempBackground.graphics.beginFill("Navy").drawRect(screenContainer.x, screenContainer.y, screenWidth, screenHeight);
 
+  var degrees = 70;
 
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
   var upArrow = new createjs.Shape();
   upArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(1/3)), (tempWidth*(1/10)), 3, 0, -90);
 
+  //increasing the temperature
+  upArrow.addEventListener("click", function (evt) {
+      degrees = degrees + .10;
+      degrees = Math.round(degrees * 100) / 100;
+      temperature.text = degrees;
+      stage.update();
+  });
+
   var downArrow = new createjs.Shape();
   downArrow.graphics.beginFill("Black").drawPolyStar((tempWidth*(4/5)), (tempHeight*(2/3)), (tempWidth*(1/10)), 3, 0, 90);
 
-
-  //increasing or decreasing the temperature
-  // upArrow.addEventListener("pressmove", function (evt) {
-  //   detect what degrees currently is, for each click of the up arrow, increase degrees by .1
-  //   is a for loop needed?
-  //   variable detecting num clicks? for each click decrease? first just try decreasing / updating degrees
-  // }
-  //
-  // downArrow.addEventListener("pressmove", function (evt) {
-  //   detect what degrees currently is, for each click of the down arrow, decrease degrees by .1
-  // }
+  downArrow.addEventListener("click", function (evt) {
+    degrees = degrees - .1;
+    degrees = Math.round(degrees * 100) / 100;
+    temperature.text = degrees;
+    stage.update();
+  });
 
   var temperature = new createjs.Text();
-
-  var degrees = "70 F";
 
   temperature.text = (degrees);
   temperature.color = "white";
@@ -72,4 +74,5 @@ function createTemp() {
         screenContainer.addChild(temperature);
         stage.update();
   }
+
 }
