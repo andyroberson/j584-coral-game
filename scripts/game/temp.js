@@ -40,6 +40,8 @@ function createTemp() {
       degrees = degrees + .10;
       degrees = Math.round(degrees * 100) / 100;
       temperature.text = degrees;
+
+      //TODO CHANGE GRAPHICS OF CORAL DEPENDING ON HOW MUCH DEGREES IS
       stage.update();
   });
 

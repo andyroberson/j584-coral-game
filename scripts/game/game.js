@@ -18,6 +18,7 @@ var tankHeight;
 var controlsMenu;
 var tankContainer;
 var coral;
+var thecontrols;
 
 var foodArr = [];
 
@@ -25,7 +26,7 @@ var foodArr = [];
 
   function init() {
     console.log("init");
-    stage = new createjs.Stage("tankCanvas");
+    stage = new createjs.Stage("gameCanvas");
 
     // grab canvas width and height for later calculations:
     w = stage.canvas.width;
@@ -43,60 +44,19 @@ var foodArr = [];
         tankContainer.setBounds(tankContainer.x, tankContainer.y, tankContainer.height, tankContainer.width);
         console.log(tankContainer.getBounds() + "and the height is" + tankHeight);
 
-//creating coral
-    //TODO - center bitmap later!
-     coral = new createjs.Bitmap("assets/coral-test2.png");
-        coral.crossOrigin="Anonymous";
-        coral.x = 170;
-        coral.y = 190;
-        coral.width = (h/5);
-        coral.height = (h/5);
-        coral.setBounds(coral.x, coral.y, coral.width, coral.height);
-        //setbounds x, y, w, h
-        coralBounds = coral.getBounds();
-        //coralHeight = coral.height;
-        console.log("coral bounds is " + coralBounds);
 
-    coral.image.onload = function() {
-      stage.update();
-    };
-
-     //creating controls menu container
-   controlsMenu = new createjs.Container();
-        controlsMenu.x = 0;
-        controlsMenu.y = (h*(4/5));
-        controlsMenu.width = w;
-        controlsMenu.height = (h/5);
-        menuHeight = controlsMenu.height;
-        controlsMenu.setBounds(controlsMenu.x, controlsMenu.y, controlsMenu.width, controlsMenu.height);
-        console.log(controlsMenu.getBounds());
-
-    //adding background color to menu container
-    var thecontrols = new createjs.Shape();
-        thecontrols.graphics.beginFill("Black").drawRect(0, 0, w, controlsMenu.height);
-            //drawRect(x, y, w, h)
-        thecontrols.height = controlsMenu.height;
-        thecontrols.width = w;
-        console.log("control height is " + thecontrols.height);
-        console.log("control width is " + thecontrols.width);
-        thecontrols.setBounds(thecontrols.x, thecontrols.y, thecontrols.height, thecontrols.width);
-
-
-    //setting up initial tank layout
-    stage.addChild(coral);
-    stage.addChild(controlsMenu);
     stage.addChild(tankContainer);
-    controlsMenu.addChild(thecontrols);
-
     stage.update();
 
+    createCoral();
+    createBottomControls();
     createFood();
     createLight();
     createTemp();
-    //createCoral();
+
     //createCarbon();
 
-    //TODO - change the above create functions to START? 
+    //TODO - change the above create functions to START?
 }
 //end init function
 
