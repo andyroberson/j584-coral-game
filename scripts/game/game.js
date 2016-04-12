@@ -26,6 +26,9 @@ var lightSwitch;
 var switchContainer;
 var switchBackground;
 
+var littleFood;
+var moreFood;
+var mostFood;
 var foodArr = [];
 var foodArr2 = [];
 var foodArr3 = [];

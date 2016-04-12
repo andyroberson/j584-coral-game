@@ -20,6 +20,10 @@ var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
      foodButton3.x = (leftControlMenu.width*(4/11));
      foodButton3.y = 215;//(switchContainer.height + 10 + 20);
 
+     littleFood = false;
+     moreFood = false;
+     mostFood = false;
+
      makeFood();
 
 function makeFood() {
@@ -27,6 +31,12 @@ function makeFood() {
     leftControlMenu.addChild(foodButton2);
     leftControlMenu.addChild(foodButton3);
     stage.update();
+}
+
+function resetFoodValues() {
+  littleFood = false;
+  moreFood = false;
+  mostFood = false;
 }
 
 // //highlight foodButton when hovered not accessing mouseover?
@@ -48,22 +58,61 @@ function makeFood() {
 // });
 
 //when the mouse is clicked, make a new food instance and make this draggable
-foodButton.addEventListener("mousedown", function (evt) {
-if (evt.nativeEvent.button >= 0) {
-    makeNewFood();
-}
+//little shrimp
+foodButton.on("click", function (evt) {
+      if (evt.nativeEvent.button >= 0) {
+          littleFood = true;
+          makeNewFood();
+      }
 stage.update();
 });
 
+//more shrimp
+foodButton2.on("click", function (evt) {
+      if (evt.nativeEvent.button >= 0) {
+          moreFood = true;
+          makeNewFood();
+          console.log("moreFood");
+      }
+stage.update();
+});
+
+//most shrimp
+foodButton3.on("click", function (evt) {
+      if (evt.nativeEvent.button >= 0) {
+          mostFood = true;
+          makeNewFood();
+          console.log("mostFood");
+      }
+stage.update();
+});
 
 function makeNewFood() {
-foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
-console.log("We're at the make new food function");
+      if (littleFood == true) {
+            foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
+            resetFoodValues();
+            console.log("We just added a little bit of food");
+      }
+
+      if (moreFood == true) {
+            foodArr.push(new createjs.Bitmap("assets/test-fish.png"));
+            resetFoodValues();
+            console.log("We just added more food");
+      }
+
+      if (mostFood == true) {
+            foodArr.push(new createjs.Bitmap("assets/test-whale.png"));
+            resetFoodValues();
+            console.log("We just added the MOST food");
+      }
+// console.log("We're at the make new food function");
+
 
 for (var i = 0; i < foodArr; i ++) {
   foodArr[i].x = 40;
   foodArr[i].y = 40;
 }
+
 console.log(foodArr[i].x);
 
 makeDraggable(foodArr[i]);
