@@ -15,8 +15,7 @@ var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
      foodButton2.x = (leftControlMenu.width*(4/11));
      foodButton2.y = 165;//(switchContainer.height + 10 + 20);
 
-
- var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
+var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
      foodButton3.x = (leftControlMenu.width*(4/11));
      foodButton3.y = 215;//(switchContainer.height + 10 + 20);
 
@@ -57,7 +56,7 @@ function resetFoodValues() {
 //   stage.update();
 // });
 
-//when the mouse is clicked, make a new food instance and make this draggable
+//when the mouse is clicked, set the appropriate value to true  and make new Food
 //little shrimp
 foodButton.on("click", function (evt) {
       if (evt.nativeEvent.button >= 0) {
@@ -87,6 +86,7 @@ foodButton3.on("click", function (evt) {
 stage.update();
 });
 
+//add appropriate food image based on which value is true (which is set depending on which button was clicked)
 function makeNewFood() {
       if (littleFood == true) {
             foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
@@ -105,86 +105,74 @@ function makeNewFood() {
             resetFoodValues();
             console.log("We just added the MOST food");
       }
-// console.log("We're at the make new food function");
 
+      for (var i = 0; i < foodArr; i ++) {
+        foodArr[i].x = 40;
+        foodArr[i].y = 40;
+      }
 
-for (var i = 0; i < foodArr; i ++) {
-  foodArr[i].x = 40;
-  foodArr[i].y = 40;
-}
+      console.log(foodArr[i].x);
 
-console.log(foodArr[i].x);
-
-makeDraggable(foodArr[i]);
-tankContainer.addChild(foodArr[i]);
-stage.update();
-//testCollision(coral,newFood);
-}
-
-//Update stage will render next frame this is for animating food
-createjs.Ticker.framerate = 40;
-createjs.Ticker.addEventListener("tick", moveFood);
-//createjs.Ticker.on("tick", foodIntersect);
-
-//makes food move randomly
-function moveFood() {
-
-//TODO - make this only work if mousedown on newFood is false
-  if(tick > 100) {
-    xT = Math.ceil(Math.random()* tankWidth);
-    yT = Math.ceil(Math.random()* tankHeight * 4/5);
-    tick = 0;
-  }
-
-    tick++;
-
-    xP += (xT - xP)/15;
-    yP += (yT - yP)/15;
-
-  for (var i = 0; i < foodArr.length; i++) {
-      foodArr[i].x += ((xP - foodArr[i].x)/60);
-      foodArr[i].y += ((yP - foodArr[i].y)/60);
+      makeDraggable(foodArr[i]);
+      tankContainer.addChild(foodArr[i]);
       stage.update();
-      // console.log("in food array?");
 
-      foodCollision = testCollision(coral,foodArr[i]);
-      if (foodCollision == true) {
-        //console.log("the food is colliding");
-        //remove food because it got eaten
-        tankContainer.removeChild(foodArr[i]);
-        foodArr.splice(foodArr[i], 1);
-        console.log("coral 1 ate the food");
-        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
-        stage.update();
       }
 
-      foodCollision2 = testCollision(coral2,foodArr[i]);
-      if (foodCollision2 == true) {
-        //console.log("the food is colliding");
-        //remove food because it got eaten
-        tankContainer.removeChild(foodArr[i]);
-        foodArr.splice(foodArr[i], 1);
-        console.log("coral 2 ate the food");
-        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
-        stage.update();
+    //Update stage will render next frame this is for animating food
+    createjs.Ticker.framerate = 40;
+    createjs.Ticker.addEventListener("tick", moveFood);
+    //createjs.Ticker.on("tick", foodIntersect);
+
+    //makes food move randomly
+    function moveFood() {
+
+    //TODO - make this only work if mousedown on newFood is false
+      if(tick > 100) {
+        xT = Math.ceil(Math.random()* tankWidth);
+        yT = Math.ceil(Math.random()* tankHeight * 4/5);
+        tick = 0;
       }
 
-      foodCollision3 = testCollision(coral3,foodArr[i]);
-      if (foodCollision3 == true) {
-        //console.log("the food is colliding");
-        //remove food because it got eaten
-        tankContainer.removeChild(foodArr[i]);
-        foodArr.splice(foodArr[i], 1);
-        console.log("coral 3 ate the food");
-        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
-        stage.update();
+        tick++;
+
+        xP += (xT - xP)/15;
+        yP += (yT - yP)/15;
+
+      for (var i = 0; i < foodArr.length; i++) {
+          foodArr[i].x += ((xP - foodArr[i].x)/60);
+          foodArr[i].y += ((yP - foodArr[i].y)/60);
+          stage.update();
+
+          foodCollision = testCollision(coral,foodArr[i]);
+          if (foodCollision == true) {
+
+            //remove food because it got eaten
+            tankContainer.removeChild(foodArr[i]);
+            foodArr.splice(foodArr[i], 1);
+            console.log("coral 1 ate the food");
+            //update stage to reflect removed food
+            stage.update();
+          }
+
+          foodCollision2 = testCollision(coral2,foodArr[i]);
+          if (foodCollision2 == true) {
+            tankContainer.removeChild(foodArr[i]);
+            foodArr.splice(foodArr[i], 1);
+            console.log("coral 2 ate the food");
+
+            stage.update();
+          }
+
+          foodCollision3 = testCollision(coral3,foodArr[i]);
+          if (foodCollision3 == true) {
+            tankContainer.removeChild(foodArr[i]);
+            foodArr.splice(foodArr[i], 1);
+            console.log("coral 3 ate the food");
+
+            stage.update();
+          }
       }
-  }
 
-  //test collision between coral and newFood ; if collide is true, the coral "ate" the food
-
-
-  //IF food.x is within the x + width of coral then remove food
-
-}
+    } //end makeFood function
 }
