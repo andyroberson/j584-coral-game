@@ -75,8 +75,7 @@ var foodArr3 = [];
     createFood();
     createLight();
     createTemp();
-
-    //createCarbon();
+    createCarbon();
 
     //TODO - change the above create functions to START?
 }
