@@ -2,6 +2,9 @@
 <html>
   <head>
 
+    <!-- bubbles
+    https://drewnoakes.com/code/javascript/bubbles.html -->
+
     <script src="/scripts/functionality/ndgmr.Collision.js"></script>
 
     <script src="/scripts/functionality/easeljs-0.8.2.min.js"></script>
@@ -37,12 +40,45 @@
       display: inline-block;
       margin-bottom: 0;
     }
+
+    #test-container {
+      position: absolute;
+    }
+
+    #bottom-aquarium {
+      background: teal;
+      margin-top: -230px;
+      margin-left: auto;
+      margin-right: auto;
+      min-height: 200px;
+    }
+
+    #test {
+      border-top: 20px solid teal;
+      margin-left: auto;
+      margin-right: auto;
+      background: #eee;
+      z-index: 600;
+      text-align: left;
+      padding: 5px;
+      max-height: 200px;
+      overflow: auto;
+    }
+
     </style>
   </head>
-  <body >
+  <body>
     <div class="container">
       <canvas id="gameCanvas" width="800" height="500">
       </canvas>
+    </div>
+    <div class="container">
+      <div id="bottom-aquarium">
+            <div id="test">
+              <center><b>Notes</b></center>
+              Instructions here!
+            </div>
+      </div>
     </div>
     <script>init();</script>
   </body>

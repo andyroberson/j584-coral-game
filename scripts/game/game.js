@@ -98,7 +98,6 @@ function testCollision(img1, img2) {
 
   if (intersection != null) {
     //if the intersection isn't null, it means it's interesecing
-    //console.log("It's intersecting!!!!");
     return true;
     //Remove or delete Food on intersection, make coral more happy
   }

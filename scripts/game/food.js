@@ -62,6 +62,7 @@ foodButton.on("click", function (evt) {
       if (evt.nativeEvent.button >= 0) {
           littleFood = true;
           makeNewFood();
+          $( "#test" ).append( "<br>We added a more food which means the coral might still be hungry");
       }
 stage.update();
 });
@@ -72,6 +73,7 @@ foodButton2.on("click", function (evt) {
           moreFood = true;
           makeNewFood();
           console.log("moreFood");
+          $( "#test" ).append( "<br>We added a more food which means the coral is probably happy");
       }
 stage.update();
 });
@@ -82,6 +84,7 @@ foodButton3.on("click", function (evt) {
           mostFood = true;
           makeNewFood();
           console.log("mostFood");
+          $( "#test" ).append( "<br>We added a lot of food which means the coral is probably overfed");
       }
 stage.update();
 });
@@ -107,8 +110,8 @@ function makeNewFood() {
       }
 
       for (var i = 0; i < foodArr; i ++) {
-        foodArr[i].x = 40;
-        foodArr[i].y = 40;
+        foodArr[i].x = 200;
+        foodArr[i].y = 0;
       }
 
       console.log(foodArr[i].x);
@@ -122,12 +125,11 @@ function makeNewFood() {
     //Update stage will render next frame this is for animating food
     createjs.Ticker.framerate = 40;
     createjs.Ticker.addEventListener("tick", moveFood);
-    //createjs.Ticker.on("tick", foodIntersect);
+
 
     //makes food move randomly
     function moveFood() {
 
-    //TODO - make this only work if mousedown on newFood is false
       if(tick > 100) {
         xT = Math.ceil(Math.random()* tankWidth);
         yT = Math.ceil(Math.random()* tankHeight * 4/5);
