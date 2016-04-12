@@ -22,6 +22,9 @@ var leftControls;
 var tankContainer;
 var coral;
 var thecontrols;
+var lightSwitch;
+var switchContainer;
+var switchBackground;
 
 var foodArr = [];
 
@@ -39,8 +42,6 @@ var foodArr = [];
 
     //creating a tank container because coral and food need bounds
     tankContainer = new createjs.Container();
-        // tankContainer.x = 0;
-        // tankContainer.y = 0;
         tankContainer.x = (w * (113/700));
         tankContainer.y = 0;
         tankContainer.width = (w*(474/700));
@@ -50,9 +51,13 @@ var foodArr = [];
         tankContainer.setBounds(tankContainer.x, tankContainer.y, tankContainer.width, tankContainer.height);
         console.log(tankContainer.getBounds() + "and the height is" + tankHeight);
 
-    tankBackground =  new createjs.Shape();
-    tankBackground.graphics.beginFill("White").drawRect(0, 0, tankWidth, tankHeight);
-
+    //tank background image
+    tankBackground = new createjs.Bitmap("assets/tank.png");
+        tankBackground.x = -12;
+        tankBackground.y = 0;
+        tankBackground.width = tankWidth;
+        tankBackground.height = tankHeight;
+        tankBackground.scaleX = 1.2;
 
     stage.addChild(tankContainer);
     tankContainer.addChild(tankBackground);

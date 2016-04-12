@@ -43,23 +43,9 @@ if (evt.nativeEvent.button >= 0) {
 stage.update();
 });
 
-//how to rename newFood each time so that it will keep making it randomly move each time
-//maybe create an array to add these shapes into? and when newFood intersects with coral, detect
-//which # in the array it's in and remove that one? but would that help with keeping them all moving?
-//counter = 0;
-
 function makeNewFood() {
 foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
 console.log("We're at the make new food function");
-
-//newFood = new createjs.Bitmap("test-shrimp.jpg"); //add to array; when deleted, POP it
-
-//foodArr.push(newFood);
-// newFood.crossOrigin="Anonymous";
-// newFood.x = 40;
-// newFood.y = 40;
-//newFood = new createjs.Shape();
-//newFood.graphics.beginFill("blue").drawCircle(0, 0, 20);
 
 for (var i = 0; i < foodArr; i ++) {
   foodArr[i].x = 40;
@@ -105,7 +91,29 @@ function moveFood() {
         //remove food because it got eaten
         tankContainer.removeChild(foodArr[i]);
         foodArr.splice(foodArr[i], 1);
-        console.log("food is removed");
+        console.log("coral 1 ate the food");
+        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
+        stage.update();
+      }
+
+      foodCollision2 = testCollision(coral2,foodArr[i]);
+      if (foodCollision2 == true) {
+        //console.log("the food is colliding");
+        //remove food because it got eaten
+        tankContainer.removeChild(foodArr[i]);
+        foodArr.splice(foodArr[i], 1);
+        console.log("coral 2 ate the food");
+        //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
+        stage.update();
+      }
+
+      foodCollision3 = testCollision(coral3,foodArr[i]);
+      if (foodCollision3 == true) {
+        //console.log("the food is colliding");
+        //remove food because it got eaten
+        tankContainer.removeChild(foodArr[i]);
+        foodArr.splice(foodArr[i], 1);
+        console.log("coral 3 ate the food");
         //TODO - make images add to array and remove image in array; at the moment it's removing the image but still listenting
         stage.update();
       }

@@ -10,27 +10,39 @@ function createCoral() {
       //TODO - center bitmap later!
       console.log("making coral");
 
-       coral = new createjs.Bitmap("assets/coral-test2.png");
-          coral.crossOrigin="Anonymous";
-          coral.x = (tankWidth*(1/2));
-          coral.y = (tankHeight*(1/5));
+       coral = new createjs.Bitmap("assets/coral-1.png");
+          coral.x = (tankWidth*(3/7));
+          coral.y = (tankHeight*(6/8));
           coral.width = (tankWidth/5);
           coral.height = (tankHeight/5);
           coral.setBounds(coral.x, coral.y, coral.width, coral.height);
           //setbounds x, y, w, h
-          coralBounds = coral.getBounds();
-          //coralHeight = coral.height;
-          console.log("coral bounds is " + coralBounds);
 
-      coral.image.onload = function() {
-        stage.update();
-      };
+      coral2 = new createjs.Bitmap("assets/coral-1.png");
+         coral2.x = (tankWidth*(6/9));
+         coral2.y = (tankHeight*(6/8));
+         coral2.width = (tankWidth/5);
+         coral2.height = (tankHeight/5);
+         coral2.setBounds(coral2.x, coral2.y, coral2.width, coral2.height);
+
+      coral3 = new createjs.Bitmap("assets/coral-2.png");
+         coral3.x = (tankWidth*(9/10));
+         coral3.y = (tankHeight*(6/8));
+         coral3.width = (tankWidth/5);
+         coral3.height = (tankHeight/5);
+         coral3.setBounds(coral3.x, coral3.y, coral3.width, coral3.height);
+
+      // coral.image.onload = function() {
+      //   stage.update();
+      // };
 
       makeCoral();
 
       //NEED 3 CORAL - randomly generate when coral is happiest?
       function makeCoral() {
             stage.addChild(coral);
+            stage.addChild(coral2);
+            stage.addChild(coral3);
             stage.update();
       }
 }
