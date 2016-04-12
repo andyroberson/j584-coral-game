@@ -4,7 +4,7 @@ function createLight() {
         switchContainer.x = (leftControlMenu.width/4);
         switchContainer.y = 0;
         switchContainer.width = (leftControlMenu.width/2);
-        switchContainer.height = (90); //lightSwitch height plus y value of 10 * 2 to give padding on both sides
+        switchContainer.height = 90; //lightSwitch height plus y value of 10 * 2 to give padding on both sides
 
   switchBackground = new createjs.Shape();
         switchBackground.graphics.beginFill("Teal").drawRect(0, 0, switchContainer.width, switchContainer.height);

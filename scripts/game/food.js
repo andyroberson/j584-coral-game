@@ -1,39 +1,51 @@
 function createFood() {
 
   //creating food button
-  var foodButton = new createjs.Shape().set({cursor: "pointer"});
+  var foodButton = new createjs.Bitmap("assets/shrimp1.png");
+      //foodButton.graphics.beginFill("Orange").drawCircle(0, 0, 20);
+      // foodButton.scaleX = 1.2;
+      // foodButton.scaleY = 1.2;
+      foodButton.x = (leftControlMenu.width*(3/7));
+      foodButton.y = 120;
+      // foodButton.width = tankWidth / 10;
+      // foodButton.height = menuHeight / 2;
+      // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
 
-      foodButton.graphics.beginFill("Orange").drawCircle(0, 0, 20);
-      foodButton.x = tankWidth / 8;
-      foodButton.y = menuHeight / 2;
-      foodButton.width = tankWidth / 10;
-      foodButton.height = menuHeight / 2;
-      foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
-      makeFood();
+var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
+     foodButton2.x = (leftControlMenu.width*(4/11));
+     foodButton2.y = 165;//(switchContainer.height + 10 + 20);
 
 
-  function makeFood() {
-        controlsMenu.addChild(foodButton);
-        stage.update();
-  }
+ var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
+     foodButton3.x = (leftControlMenu.width*(4/11));
+     foodButton3.y = 215;//(switchContainer.height + 10 + 20);
 
-//highlight foodButton when hovered not accessing mouseover?
-foodButton.addEventListener("mouseover", function (evt) {
-  foodButton.graphics.clear().beginFill("Red").drawCircle(0, 0, 20).endFill();
-  foodButton.x = tankWidth / 6;
-  foodButton.y = menuHeight / 2;
-  console.log("food button is hovered");
-  stage.update();
-});
+     makeFood();
 
-//when not hovered, remove the highlight
-foodButton.addEventListener("mouseout", function (evt) {
-  foodButton.graphics.clear().beginFill("Orange").drawCircle(0, 0, 20).endFill();
-  foodButton.x = tankWidth / 6;
-  foodButton.y = menuHeight / 2;
-  console.log("food button isn't hovered");
-  stage.update();
-});
+function makeFood() {
+    leftControlMenu.addChild(foodButton);
+    leftControlMenu.addChild(foodButton2);
+    leftControlMenu.addChild(foodButton3);
+    stage.update();
+}
+
+// //highlight foodButton when hovered not accessing mouseover?
+// foodButton.addEventListener("mouseover", function (evt) {
+//   foodButton.graphics.clear().beginFill("Red").drawCircle(0, 0, 20).endFill();
+//   foodButton.x = (leftControlMenu.width/4);
+//   foodButton.y = menuHeight / 2;
+//   console.log("food button is hovered");
+//   stage.update();
+// });
+//
+// //when not hovered, remove the highlight
+// foodButton.addEventListener("mouseout", function (evt) {
+//   foodButton.graphics.clear().beginFill("Orange").drawCircle(0, 0, 20).endFill();
+//   foodButton.x = tankWidth / 6;
+//   foodButton.y = menuHeight / 2;
+//   console.log("food button isn't hovered");
+//   stage.update();
+// });
 
 //when the mouse is clicked, make a new food instance and make this draggable
 foodButton.addEventListener("mousedown", function (evt) {
@@ -42,6 +54,7 @@ if (evt.nativeEvent.button >= 0) {
 }
 stage.update();
 });
+
 
 function makeNewFood() {
 foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));

@@ -14,7 +14,7 @@ function createLeftControls() {
 
   //adding background color to menu container
   leftControls = new createjs.Shape();
-      leftControls.graphics.beginFill("Navy").drawRect(leftControlMenu.x, leftControlMenu.y, leftControlMenu.width, leftControlMenu.height);
+      leftControls.graphics.drawRect(leftControlMenu.x, leftControlMenu.y, leftControlMenu.width, leftControlMenu.height);
           //drawRect(x, y, w, h)
       leftControls.height = leftControlMenu.height;
       leftControls.width = leftControlMenu.width;
@@ -22,13 +22,13 @@ function createLeftControls() {
       console.log("control width is " + leftControls.width);
       leftControls.setBounds(leftControls.x, leftControls.y, leftControls.height, leftControls.width);
 
-      makeLeftControls();
+  makeLeftControls();
 
       function makeLeftControls() {
-        stage.addChild(leftControlMenu);
-        leftControlMenu.addChild(leftControls);
+          stage.addChild(leftControlMenu);
+          leftControlMenu.addChild(leftControls);
 
-        stage.update();
+          stage.update();
       }
 
 }

@@ -27,6 +27,8 @@ var switchContainer;
 var switchBackground;
 
 var foodArr = [];
+var foodArr2 = [];
+var foodArr3 = [];
 
 //how to add functionality to this???
 
