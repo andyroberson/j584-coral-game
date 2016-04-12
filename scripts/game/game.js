@@ -19,6 +19,8 @@ var tankWidth;
 var controlsMenu;
 var leftControlMenu;
 var leftControls;
+var rightControlMenu;
+var rightControls;
 var tankContainer;
 var coral;
 var thecontrols;
@@ -32,8 +34,6 @@ var mostFood;
 var foodArr = [];
 var foodArr2 = [];
 var foodArr3 = [];
-
-//how to add functionality to this???
 
   function init() {
     console.log("init");

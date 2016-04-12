@@ -32,10 +32,6 @@ function createCoral() {
          coral3.height = (tankHeight/5);
          coral3.setBounds(coral3.x, coral3.y, coral3.width, coral3.height);
 
-      // coral.image.onload = function() {
-      //   stage.update();
-      // };
-
       makeCoral();
 
       //NEED 3 CORAL - randomly generate when coral is happiest?
