@@ -15,7 +15,10 @@ var w;
 var h;
 var menuHeight;
 var tankHeight;
+var tankWidth;
 var controlsMenu;
+var leftControlMenu;
+var leftControls;
 var tankContainer;
 var coral;
 var thecontrols;
@@ -36,20 +39,29 @@ var foodArr = [];
 
     //creating a tank container because coral and food need bounds
     tankContainer = new createjs.Container();
-        tankContainer.x = 0;
+        // tankContainer.x = 0;
+        // tankContainer.y = 0;
+        tankContainer.x = (w * (113/700));
         tankContainer.y = 0;
-        tankContainer.width = w;
-        tankContainer.height = (h*(4/5));
+        tankContainer.width = (w*(474/700));
+        tankContainer.height = (h*(272/500));
         tankHeight = tankContainer.height;
-        tankContainer.setBounds(tankContainer.x, tankContainer.y, tankContainer.height, tankContainer.width);
+        tankWidth = tankContainer.width;
+        tankContainer.setBounds(tankContainer.x, tankContainer.y, tankContainer.width, tankContainer.height);
         console.log(tankContainer.getBounds() + "and the height is" + tankHeight);
+
+    tankBackground =  new createjs.Shape();
+    tankBackground.graphics.beginFill("White").drawRect(0, 0, tankWidth, tankHeight);
 
 
     stage.addChild(tankContainer);
+    tankContainer.addChild(tankBackground);
     stage.update();
 
     createCoral();
     createBottomControls();
+    createLeftControls();
+    createRightControls();
     createFood();
     createLight();
     createTemp();

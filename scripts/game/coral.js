@@ -12,10 +12,10 @@ function createCoral() {
 
        coral = new createjs.Bitmap("assets/coral-test2.png");
           coral.crossOrigin="Anonymous";
-          coral.x = 170;
-          coral.y = 190;
-          coral.width = (h/5);
-          coral.height = (h/5);
+          coral.x = (tankWidth*(1/2));
+          coral.y = (tankHeight*(1/5));
+          coral.width = (tankWidth/5);
+          coral.height = (tankHeight/5);
           coral.setBounds(coral.x, coral.y, coral.width, coral.height);
           //setbounds x, y, w, h
           coralBounds = coral.getBounds();

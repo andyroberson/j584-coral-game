@@ -5,11 +5,11 @@ function createLight() {
 var lightControlOff = new createjs.Shape();
 
     lightControlOff.graphics.beginFill("Purple").drawRect(-150, 0, (w/6), (menuHeight / 2));
-    lightControlOff.x = w / 2;
+    lightControlOff.x = tankWidth / 2;
     lightControlOff.y = menuHeight / 4;
-    lightControlOff.width = w / 6;
+    lightControlOff.width = tankWidth / 6;
     lightControlOff.height = menuHeight / 4;
-    lightControlOff.setBounds(lightControlOff.x, lightControlOff.y, lightControlOff.height, lightControlOff.width);
+    lightControlOff.setBounds(lightControlOff.x, lightControlOff.y, lightControlOff.width, lightControlOff.height);
     console.log(lightControlOff.x);
     makeLight();
 
@@ -21,11 +21,11 @@ var lightControlOff = new createjs.Shape();
 var lightControlDim = new createjs.Shape();
 
     lightControlDim.graphics.beginFill("Green").drawRect(0, 0, (w/6), (menuHeight / 2));
-    lightControlDim.x = w / 2;
+    lightControlDim.x = tankWidth / 2;
     lightControlDim.y = menuHeight / 4;
-    lightControlDim.width = w / 6;
+    lightControlDim.width = tankWidth / 6;
     lightControlDim.height = menuHeight / 4;
-    lightControlDim.setBounds(lightControlDim.x, lightControlDim.y, lightControlDim.height, lightControlDim.width);
+    lightControlDim.setBounds(lightControlDim.x, lightControlDim.y, lightControlDim.width, lightControlDim.height);
     console.log(lightControlDim.x);
     makeLight();
 
@@ -38,9 +38,9 @@ var lightControlDim = new createjs.Shape();
 var lightControlDark = new createjs.Shape();
 
     lightControlDark.graphics.beginFill("Yellow").drawRect(150, 0, (w/6), (menuHeight / 2));
-    lightControlDark.x = w / 2;
+    lightControlDark.x = tankWidth / 2;
     lightControlDark.y = menuHeight / 4;
-    lightControlDark.width = w / 6;
+    lightControlDark.width = tankWidth / 6;
     lightControlDark.height = menuHeight / 4;
     lightControlDark.setBounds(lightControlDark.x, lightControlDark.y, lightControlDark.height, lightControlDark.width);
     console.log(lightControlDark.x);

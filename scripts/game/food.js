@@ -4,11 +4,11 @@ function createFood() {
   var foodButton = new createjs.Shape().set({cursor: "pointer"});
 
       foodButton.graphics.beginFill("Orange").drawCircle(0, 0, 20);
-      foodButton.x = w / 6;
+      foodButton.x = tankWidth / 8;
       foodButton.y = menuHeight / 2;
-      foodButton.width = w / 6;
+      foodButton.width = tankWidth / 10;
       foodButton.height = menuHeight / 2;
-      foodButton.setBounds(foodButton.x, foodButton.y, foodButton.height, foodButton.width);
+      foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
       makeFood();
 
 
@@ -20,7 +20,7 @@ function createFood() {
 //highlight foodButton when hovered not accessing mouseover?
 foodButton.addEventListener("mouseover", function (evt) {
   foodButton.graphics.clear().beginFill("Red").drawCircle(0, 0, 20).endFill();
-  foodButton.x = w / 6;
+  foodButton.x = tankWidth / 6;
   foodButton.y = menuHeight / 2;
   console.log("food button is hovered");
   stage.update();
@@ -29,7 +29,7 @@ foodButton.addEventListener("mouseover", function (evt) {
 //when not hovered, remove the highlight
 foodButton.addEventListener("mouseout", function (evt) {
   foodButton.graphics.clear().beginFill("Orange").drawCircle(0, 0, 20).endFill();
-  foodButton.x = w / 6;
+  foodButton.x = tankWidth / 6;
   foodButton.y = menuHeight / 2;
   console.log("food button isn't hovered");
   stage.update();
@@ -83,8 +83,8 @@ function moveFood() {
 
 //TODO - make this only work if mousedown on newFood is false
   if(tick > 100) {
-    xT = Math.ceil(Math.random()* w);
-    yT = Math.ceil(Math.random()* h * 4/5);
+    xT = Math.ceil(Math.random()* tankWidth);
+    yT = Math.ceil(Math.random()* tankHeight * 4/5);
     tick = 0;
   }
 
