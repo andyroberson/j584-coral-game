@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>EaselJS: Simple SpriteSheet Example</title>
+
+	<link href="../_assets/css/shared.css" rel="stylesheet" type="text/css"/>
+	<link href="../_assets/css/examples.css" rel="stylesheet" type="text/css"/>
+	<script src="../_assets/js/examples.js"></script>
+
+	<script src="../lib/easeljs-NEXT.combined.js"></script>
+	<!-- We also provide hosted minified versions of all CreateJS libraries.
+	  http://code.createjs.com -->
+
+<script id="editable">
+	var stage;
+	function init() {
+
+		// create a new stage and point it at our canvas:
+		stage = new createjs.Stage(document.getElementById("testCanvas"));
+
+		// Define a spritesheet. Note that this data was exported by Zoë.
+		var spriteSheet = new createjs.SpriteSheet({
+				framerate: 23,
+				"images": ["coral1-spritesheet.png"],
+				"frames": [
+					//x, y, width, height, imageIndex, regX, regY
+					[0, 6, 256, 149],
+					[261, 6, 256, 149],
+					[524, 6, 256, 149],
+					[0, 159, 256, 149],
+					[261, 159, 256, 149],
+					[524, 159, 256, 149],
+					[0, 313, 256, 149],
+					[261, 313, 256, 149],
+					[524, 313, 256, 149],
+					[0, 468, 256, 149],
+					[261, 468, 256, 149],
+					[524, 468, 256, 149],
+					[0, 625, 256, 149],
+					[261, 623, 256, 149],
+					[524, 625, 256, 149],
+					[0, 779, 256, 149],
+					[261, 777, 256, 149],
+					[524, 779, 256, 149],
+					[0, 936, 256, 149],
+					[261, 934, 256, 149],
+					[524, 936, 256, 149],
+					[0, 1096, 256, 149],
+					[261, 1094, 256, 149]
+				],
+				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
+				"animations": {
+					//start. end, next, speed
+					"bleach": [0, 23, "bleach", .1]
+					//"jump": [26, 63, "run"]
+				}
+			});
+
+		// Events from SpriteSheet (not required for the demo)
+		spriteSheet.on("complete", function(event) {
+			console.log("Complete", event);
+		});
+		spriteSheet.on("error", function(event) {
+			console.log("Error", event);
+		});
+
+		var grant = new createjs.Sprite(spriteSheet, "run");
+		grant.x = stage.canvas.width / 2;
+		grant.y = 22;
+
+		// Add Grant to the stage, and add it as a listener to Ticker to get updates each frame.
+		stage.addChild(grant);
+		createjs.Ticker.timingMode = createjs.Ticker.RAF;
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+
+</script>
+</head>
+
+<body onload="init();">
+
+<header class="EaselJS">
+	<h1>Simple SpriteSheet Example</h1>
+
+	<p>A simple example of defining a <code>SpriteSheet</code> and playing it
+		back using <code>Sprite</code>.</p>
+</header>
+
+<div>
+	<canvas id="testCanvas" width="960" height="400"></canvas>
+</div>
+</body>
+</html>
