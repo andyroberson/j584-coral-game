@@ -1,7 +1,7 @@
 function createTemp() {
 
   //container for all temperature graphics
-  var tempContainer = new createjs.Container();
+  tempContainer = new createjs.Container();
       tempContainer.x = (rightControlMenu.x + 20); //10 padding
       tempContainer.y = (leftMenuHeight/6);
       tempContainer.width = (leftControlMenu.width * (70/113)); //-20 for 10 padding on left and right
@@ -14,7 +14,7 @@ function createTemp() {
 
 
   //bg for temperature graphics
-  var tempBackground = new createjs.Bitmap("assets/temp-bg2.png");
+  var tempBackground = new createjs.Bitmap("assets/temp-bg.png");
       tempBackground.x = 0;
       tempBackground.y = 0;
 
@@ -35,7 +35,7 @@ function createTemp() {
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
   var upArrow = new createjs.Shape();
-  upArrow.graphics.beginFill("#eee").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
+  upArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
 
   //increasing the temperature
   upArrow.addEventListener("click", function (evt) {
@@ -48,7 +48,7 @@ function createTemp() {
   });
 
   var downArrow = new createjs.Shape();
-  downArrow.graphics.beginFill("#eee").drawPolyStar((tempWidth*(5/11)), (tempHeight*(10/12)), (tempWidth*(1/6)), 3, 0, 90);
+  downArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(10/12)), (tempWidth*(1/6)), 3, 0, 90);
 
   downArrow.addEventListener("click", function (evt) {
     degrees = degrees - .1;

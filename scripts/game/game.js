@@ -27,6 +27,7 @@ var thecontrols;
 var lightSwitch;
 var switchContainer;
 var switchBackground;
+var tempContainer;
 
 var littleFood;
 var moreFood;

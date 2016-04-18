@@ -2,15 +2,16 @@ function createCarbon() {
       //container for all carbon graphics
       var carbonContainer = new createjs.Container();
           carbonContainer.x = (rightControlMenu.x + 20); //10 padding
-          carbonContainer.y = (leftMenuHeight/3 + (leftMenuHeight/4)); //adding height and padding*2 of tempContainer so displays below
-          carbonContainer.width = (leftControlMenu.width - 20); //-20 for 10 padding on left and right
-          carbonContainer.height = leftMenuHeight/4;
+          carbonContainer.y = tempContainer.height + 60; //adding height and padding*2 of tempContainer so displays below
+          carbonContainer.width = tempContainer.width; //-20 for 10 padding on left and right
+          carbonContainer.height = 102;
           carbonHeight = carbonContainer.height;
           carbonWidth = carbonContainer.width;
           carbonContainer.setBounds(carbonContainer.x, carbonContainer.y, carbonContainer.width, carbonContainer.height);
 
-      var carbonBackground = new createjs.Shape();
-          carbonBackground.graphics.beginFill("Teal").drawRect(0, 0, carbonWidth, carbonHeight);
+      var carbonBackground = new createjs.Bitmap("assets/carbon-bg.png");
+          carbonBackground.x = 0;
+          carbonBackground.y = 0;
 
       //container for screen that shows carbon (2nd screencontainer because temp had one too)
       var screenContainer2 = new createjs.Container();
@@ -24,13 +25,13 @@ function createCarbon() {
           screenContainer2.setBounds(screenContainer2.x, screenContainer2.y, screenContainer2.width, screenContainer2.height);
 
       //background for temperature window
-      var carbonScreen = new createjs.Shape();
-          carbonBackground.graphics.beginFill("#EEE").drawRect(screenContainer2.x, screenContainer2.y, screenWidth2, screenHeight2);
+      // var carbonScreen = new createjs.Shape();
+      //     carbonScreen.graphics.beginFill("#EEE").drawRect(screenContainer2.x, screenContainer2.y, screenWidth2, screenHeight2);
 
       var carbon = 7;
 
       var upArrow2 = new createjs.Shape();
-      upArrow2.graphics.beginFill("#eee").drawPolyStar((tempWidth*(4/5)), (tempHeight*(1/3)), (tempWidth*(1/10)), 3, 0, -90);
+      upArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
 
       //increasing the temperature
       upArrow2.addEventListener("click", function (evt) {
@@ -44,7 +45,7 @@ function createCarbon() {
       });
 
       var downArrow2 = new createjs.Shape();
-      downArrow2.graphics.beginFill("#eee").drawPolyStar((tempWidth*(4/5)), (tempHeight*(2/3)), (tempWidth*(1/10)), 3, 0, 90);
+      downArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(14/17)), (tempWidth*(1/6)), 3, 0, 90);
 
       downArrow2.addEventListener("click", function (evt) {
         carbon = carbon - 1;
@@ -58,18 +59,18 @@ function createCarbon() {
       //creating and styling carbondisplay text
       var carbonDisplay = new createjs.Text();
           carbonDisplay.text = (carbon);
-          carbonDisplay.color = "#666";
+          carbonDisplay.color = "#fff";
           carbonDisplay.font = "15px arial";
-          carbonDisplay.x = (screenWidth2 / 5);
-          carbonDisplay.y = (screenHeight2 / 4);
+          carbonDisplay.x = (screenWidth2 / 7);
+          carbonDisplay.y = (screenHeight2 * (5/9));
 
       //creating and styling F in farenheit
       var carbonUnit = new createjs.Text();
           carbonUnit.text = "PH"
-          carbonUnit.color = "#666";
+          carbonUnit.color = "#fff";
           carbonUnit.font = "bold 10px arial";
-          carbonUnit.x = (screenWidth2 * (8/13));
-          carbonUnit.y = (screenHeight2 / 5);
+          carbonUnit.x = (screenWidth2 * (10/13));
+          carbonUnit.y = (screenHeight2 * (5/9));
 
       makeCarbon();
 
@@ -79,7 +80,7 @@ function createCarbon() {
           carbonContainer.addChild(screenContainer2);
           carbonContainer.addChild(upArrow2);
           carbonContainer.addChild(downArrow2);
-          screenContainer2.addChild(carbonScreen);
+          // screenContainer2.addChild(carbonScreen);
           screenContainer2.addChild(carbonDisplay);
           screenContainer2.addChild(carbonUnit);
           stage.update();
