@@ -2,26 +2,27 @@ function createBottomControls() {
   //creating controls menu container
 controlsMenu = new createjs.Container();
      //needs to align with tankContainer
-     controlsMenu.x = tankContainer.x + 1;
+     controlsMenu.x = tankContainer.x - 61;
 
      //needs to start where tankContainer ends
      controlsMenu.y = tankContainer.height;
 
-     controlsMenu.width = tankContainer.width;
+     controlsMenu.width = (w*(582/700));
      controlsMenu.height = (h*(228/500));
      menuHeight = controlsMenu.height;
      controlsMenu.setBounds(controlsMenu.x, controlsMenu.y, controlsMenu.width, controlsMenu.height);
      console.log(controlsMenu.getBounds());
 
  //adding background color to menu container
- thecontrols = new createjs.Shape();
-     thecontrols.graphics.drawRect(0, 0, controlsMenu.width, controlsMenu.height);
-         //drawRect(x, y, w, h)
-     thecontrols.height = controlsMenu.height;
-     thecontrols.width = controlsMenu.width;
-     console.log("control height is " + thecontrols.height);
-     console.log("control width is " + thecontrols.width);
-     thecontrols.setBounds(thecontrols.x, thecontrols.y, thecontrols.width, thecontrols.height);
+ controlsMenuBackground= new createjs.Bitmap("assets/tank-bottom.png");
+     controlsMenuBackground.x = 0;
+     controlsMenuBackground.y = 0;
+     controlsMenuBackground.width = controlsMenu.width;
+     controlsMenuBackground.height = controlsMenu.height;
+     controlsMenuBackground.scaleX = 1.15;
+
+
+     controlsMenuBackground.setBounds( controlsMenuBackground.x,  controlsMenuBackground.y,  controlsMenuBackground.width,  controlsMenuBackground.height);
 
 //container to log all actions
  actionLog = new createjs.Container();
@@ -51,9 +52,10 @@ var logTitle = new createjs.Text();
 
      function makeBottomControls() {
          stage.addChild(controlsMenu);
-         controlsMenu.addChild(thecontrols);
-         controlsMenu.addChild(actionLog);
-         actionLog.addChild(actionLogBG);
+         controlsMenu.addChild(controlsMenuBackground);
+         stage.update();
+        //  controlsMenu.addChild(actionLog);
+        //  actionLog.addChild(actionLogBG);
          //actionLog.addChild(logTitle);
      }
 

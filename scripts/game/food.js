@@ -1,23 +1,40 @@
 function createFood() {
 
-  //creating food button
+  var foodContainer = new createjs.Container();
+      foodContainer.x = (switchContainer.x);
+      foodContainer.y = (switchContainer.height + 1);
+      foodContainer.height = 170;
+      foodContainer.width = switchContainer.width;
+
+//foodContainerBackground image
+ var foodContainerBg = new createjs.Bitmap("assets/food-bg.png");
+      foodContainerBg.x = 0;
+      foodContainerBg.y = 0;
+
+ var foodButtonBg = new createjs.Shape();
+     foodButtonBg.graphics.beginFill("White").drawCircle(33, 48, 21);
+
+ var foodButtonBg2 = new createjs.Shape();
+     foodButtonBg2.graphics.beginFill("White").drawCircle(33, 94, 21);
+
+ var foodButtonBg3 = new createjs.Shape();
+     foodButtonBg3.graphics.beginFill("White").drawCircle(33, 141, 21);
+
+  //creating food button;
   var foodButton = new createjs.Bitmap("assets/shrimp1.png");
-      //foodButton.graphics.beginFill("Orange").drawCircle(0, 0, 20);
-      // foodButton.scaleX = 1.2;
-      // foodButton.scaleY = 1.2;
-      foodButton.x = (leftControlMenu.width*(3/7));
-      foodButton.y = 120;
+      foodButton.x = 25;
+      foodButton.y = 38;
       // foodButton.width = tankWidth / 10;
       // foodButton.height = menuHeight / 2;
       // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
 
 var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
-     foodButton2.x = (leftControlMenu.width*(4/11));
-     foodButton2.y = 165;//(switchContainer.height + 10 + 20);
+     foodButton2.x = 18;
+     foodButton2.y = 82;//(switchContainer.height + 10 + 20);
 
 var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
-     foodButton3.x = (leftControlMenu.width*(4/11));
-     foodButton3.y = 215;//(switchContainer.height + 10 + 20);
+     foodButton3.x = 16;
+     foodButton3.y = 124;//(switchContainer.height + 10 + 20);
 
      littleFood = false;
      moreFood = false;
@@ -26,9 +43,14 @@ var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
      makeFood();
 
 function makeFood() {
-    leftControlMenu.addChild(foodButton);
-    leftControlMenu.addChild(foodButton2);
-    leftControlMenu.addChild(foodButton3);
+    leftControlMenu.addChild(foodContainer);
+    foodContainer.addChild(foodContainerBg);
+    foodContainer.addChild(foodButtonBg);
+    foodContainer.addChild(foodButtonBg2);
+    foodContainer.addChild(foodButtonBg3);
+    foodContainer.addChild(foodButton);
+    foodContainer.addChild(foodButton2);
+    foodContainer.addChild(foodButton3);
     stage.update();
 }
 

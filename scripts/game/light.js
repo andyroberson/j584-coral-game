@@ -2,18 +2,21 @@ function createLight() {
 
   switchContainer = new createjs.Container();
         switchContainer.x = (leftControlMenu.width/4);
-        switchContainer.y = 0;
-        switchContainer.width = (leftControlMenu.width/2);
-        switchContainer.height = 90; //lightSwitch height plus y value of 10 * 2 to give padding on both sides
+        switchContainer.y = 5;
+        switchContainer.width = (leftControlMenu.width * (70/113));
+        switchContainer.height = 112; //lightSwitch height plus y value of 10 * 2 to give padding on both sides
 
-  switchBackground = new createjs.Shape();
-        switchBackground.graphics.beginFill("Teal").drawRect(0, 0, switchContainer.width, switchContainer.height);
+  switchBackground = new createjs.Bitmap("assets/lights-bg.png");
+        switchBackground.x = 0;
+        switchBackground.y = 0
+        switchBackground.width = (switchContainer.width);
+        switchBackground.height = 101;
 
-    lightSwitch = new Slider(0, 0, 70, 20).set({x: ((switchContainer.width/2)+10), y: 10, value: 50});
-		lightSwitch.on("change", handleSliderChange, this);
+  lightSwitch = new Slider(0, 0, 60, 20).set({x: ((switchContainer.width/2)+5), y: 27, value: 50});
+		    lightSwitch.on("change", handleSliderChange, this);
 
-    //rotate slider to be like a light switch
-    lightSwitch.rotation=90;
+        //rotate slider to be like a light switch
+        lightSwitch.rotation=90;
 
 		updateEffect(lightSwitch.value);
 
