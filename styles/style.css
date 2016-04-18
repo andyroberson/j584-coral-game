@@ -1,0 +1,51 @@
+body {
+  background: #fff;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/*game canvas; what every part of the game is contained in*/
+#gameCanvas {
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+#test-container {
+  position: absolute;
+}
+
+#bottom-aquarium-container {
+  margin-top: -90px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 800px;
+  text-align: center;
+}
+
+#bottom-aquarium2 {
+  background: url("../assets/table-log.png");
+  background-repeat: no-repeat;
+  width: 547px;
+  min-height: 193px;
+  display: inline-block;
+}
+
+#log {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: arial;
+  margin-top: 35px;
+  width: 450px;
+  z-index: 3;
+  text-align: left;
+  padding: 5px;
+  max-height: 120px;
+  overflow: auto;
+}

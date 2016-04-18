@@ -16,6 +16,12 @@ function createCoral() {
           coral.width = (tankWidth/5);
           coral.height = (tankHeight/5);
           coral.setBounds(coral.x, coral.y, coral.width, coral.height);
+          // coral.addClass("Coral1");
+          // coral.class
+          coral.id = "coral1";
+          console.log("coral id = " + coral.id);
+          //coral.id
+          //coral.name
           //setbounds x, y, w, h
 
       coral2 = new createjs.Bitmap("assets/coral-1.png");

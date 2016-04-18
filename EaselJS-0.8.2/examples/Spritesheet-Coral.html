@@ -53,7 +53,9 @@
 				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
 				"animations": {
 					//start. end, next, speed
-					"bleach": [0, 23, "bleach", .1]
+					"normal": [0, 0, "normal", 1],
+					"bleach": [0, 23, "normal", 1]
+					//"blink":
 					//"jump": [26, 63, "run"]
 				}
 			});
@@ -66,9 +68,16 @@
 			console.log("Error", event);
 		});
 
-		var grant = new createjs.Sprite(spriteSheet, "run");
+		var grant = new createjs.Sprite(spriteSheet, "normal");
 		grant.x = stage.canvas.width / 2;
 		grant.y = 22;
+
+		stage.addEventListener("stagemousedown", handleJumpStart);
+
+
+		function handleJumpStart() {
+			grant.gotoAndPlay("bleach");
+		}
 
 		// Add Grant to the stage, and add it as a listener to Ticker to get updates each frame.
 		stage.addChild(grant);

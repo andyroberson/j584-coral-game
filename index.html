@@ -5,13 +5,16 @@
     <!-- bubbles
     https://drewnoakes.com/code/javascript/bubbles.html -->
 
+    <!-- collision detection js -->
     <script src="/scripts/functionality/ndgmr.Collision.js"></script>
 
+    <!-- easeljs scripts, jquery -->
     <script src="/scripts/functionality/easeljs-0.8.2.min.js"></script>
     <script src="/scripts/functionality/jquery-min.js"></script>
     <script src="/scripts/functionality/jquery-ui.min.js"></script>
     <script src="/scripts/functionality/Slider.js"></script>
 
+    <!-- coral game js -->
     <script src="/scripts/game/game.js"></script>
     <script src="/scripts/game/coral.js"></script>
     <script src="/scripts/game/bottomControls.js"></script>
@@ -22,64 +25,72 @@
     <script src="/scripts/game/temp.js"></script>
     <script src="/scripts/game/carbon.js"></script>
 
-    <style>
-    body {
-      background: #fff;
-    }
+    <!--javascript popups-->
+    <link rel="stylesheet" href="joyride-master/joyride-2.1.css">
+    <!-- <link rel="stylesheet" href="joyride-master/demo/demo-style.css">
+    <link rel="stylesheet" href="joyride-master/demo/mobile.css"> -->
 
-    .container {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-    }
 
-    /*game canvas; what every part of the game is contained in*/
-    #gameCanvas {
-      margin-left: auto;
-      margin-right: auto;
-      display: inline-block;
-      margin-bottom: 0;
-    }
+    <!-- styling sheet -->
+    <link rel="stylesheet" href="styles/style.css">
 
-    #test-container {
-      position: absolute;
-    }
-
-    #bottom-aquarium {
-      background: teal;
-      margin-top: -230px;
-      margin-left: auto;
-      margin-right: auto;
-      min-height: 200px;
-    }
-
-    #test {
-      border-top: 20px solid teal;
-      margin-left: auto;
-      margin-right: auto;
-      background: #eee;
-      z-index: 600;
-      text-align: left;
-      padding: 5px;
-      max-height: 200px;
-      overflow: auto;
-    }
-
-    </style>
   </head>
   <body>
     <div class="container">
       <canvas id="gameCanvas" width="800" height="400">
       </canvas>
     </div>
-    <!-- <div class="container">
-      <div id="bottom-aquarium">
-            <div id="test">
-              <center><b>Notes</b></center>
-              Instructions here!
+    <div id="bottom-aquarium-container">
+      <div id="bottom-aquarium2">
+            <div id="log">
+              <!-- Welcome to the coral lab and meet Big Red!
+              That's our nickname for the massive starlet coral you see above.
+              As a marine biologist, you will conduct experiments on three
+              Big Red samples to study how climate changes affect living organisms.
+              <br><br>
+              You will be allowed to change one variable (food, light, temperature, or carbon dioxide) in each experiment to see how it affects the Big Red's health.
+              All other variables will be frozen at the recommended values to better understand
+              what hurts or helps Big Red. -->
+              <!-- Each experiment will "run" for 30 days under the conditions you set. -->
+              <!-- Just like humans, one sample may be more sensitive than another, but their reactions will
+              generally indicate the same conclusion. -->
+
             </div>
       </div>
-    </div> -->
+    </div>
+    <!-- Popup Content -->
+    <ol id="joyRideTipContent">
+
+    <li data-button="Get Started">
+      <h2>Welcome to the coral lab!</h2>
+      <p>As a marine biologist, you will conduct experiments on three
+      Big Red samples to study how climate changes affect living organisms.</p>
+      <p>You will be allowed to change one variable (food, light, temperature, or carbon dioxide)
+        in each experiment to see how it affects the Big Red's health.</p>
+
+    </li>
+    <li data-id="coral1" data-button="Next">hey this is coral</li>
+    </ol>
+    <!--run the game-->
     <script>init();</script>
+    <!-- Run the popup plugin -->
+      <!-- <script type="text/javascript" src="../jquery-1.10.1.js"></script> -->
+      <script type="text/javascript" src="joyride-master/jquery.cookie.js"></script>
+      <script type="text/javascript" src="joyride-master/modernizr.mq.js"></script>
+      <script type="text/javascript" src="joyride-master/jquery.joyride-2.1.js"></script>
+      <script>
+    $(window).load(function() {
+      $('#joyRideTipContent').joyride({
+        autoStart : true,
+        postStepCallback : function (index, tip) {
+        if (index == 2) {
+          $(this).joyride('set_li', false, 1);
+        }
+      },
+      modal:true,
+      expose: true
+      });
+    });
+  </script>
   </body>
 </html>
