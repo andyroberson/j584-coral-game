@@ -101,39 +101,59 @@
 				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
 				animations: {
 					//start. end, next, speed
-					// "normal": [0, 0, "normal", 1], //still
+					// not bleached stare (Default)
 					"stare": {
 						frames: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 						 next: "blink",
 						 speed: .2
 					},
+					//half-bleached stare
 					"stare-13": {
 						frames: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
 						next: "blink-13",
 						speed: .2
 					},
+					//3-4ths bleached stare
+					"stare-19": {
+						frames: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18],
+						next: "blink-19",
+						speed: .2
+					},
+					//full bleached
 					"stare-bleach": {
 						frames: [23, 23, 23, 23, 23, 23, 23, 23, 23, 23],
 						next: "blink-bleach",
 						speed: .2
 					},
+					//not bleached blink
 					"blink": {
 						frames: [24, 25, 24],
 						next: "stare",
 						speed: .7
 					},
+					//half-bleached blink
 					"blink-13": {
 						frames: [48, 49, 48],
 						next: "stare-13",
 						speed: .7
 					},
+					"blink-19": {
+						frames: [60, 61, 60],
+						next: "stare-19",
+						speed: .7
+					},
+					//full bleached blink
 					"blink-bleach": {
 						frames: [68, 69, 68],
 						next: "stare-bleach",
 						speed: .7
 					},
+					//coral phasing until half bleached
 					"bleach-13": [0, 12, "stare-13", .9],
-					"bleach": [0, 23, "stare-bleach", 1]
+					//function that shows coral phasing until 3-4s bleached
+					"bleach-19": [0, 18, "stare-19", .9],
+					//coral phasing until completely bleached
+					"bleach": [0, 23, "stare-bleach", .9]
 				}
 			});
 
