@@ -117,7 +117,7 @@
 					"stare-19": {
 						frames: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18],
 						next: "blink-19",
-						speed: .2
+						speed: .3
 					},
 					//full bleached
 					"stare-bleach": {
@@ -138,7 +138,7 @@
 						speed: .7
 					},
 					"blink-19": {
-						frames: [60, 61, 60],
+						frames: [58, 59, 58],
 						next: "stare-19",
 						speed: .7
 					},
@@ -172,7 +172,7 @@
 		stage.addEventListener("stagemousedown", handleJumpStart);
 
 		function handleJumpStart() {
-			grant.gotoAndPlay("bleach");
+			grant.gotoAndPlay("bleach-19");
 		}
 
 		// Add Grant to the stage, and add it as a listener to Ticker to get updates each frame.
