@@ -23,7 +23,7 @@
 		// Define a spritesheet. Note that this data was exported by Zoë.
 		var spriteSheet = new createjs.SpriteSheet({
 				framerate: 13,
-				numFrames: 70,
+				numFrames: 50,
 				images: ["coral1-final-spritesheet-sm.png"],
 			  frames: [
 					//x, y, width, height, imageIndex, regX, regY
@@ -80,41 +80,20 @@
 					[127, 306, 62, 36],
 					[191, 306, 62, 36],
 					[254, 306, 62, 36],
-					[317, 306, 62, 36], //54
-					[0, 344, 62, 36], //55
-					[63, 344, 62, 36],
-					[127, 344, 62, 36],
-					[191, 344, 62, 36],
-					[254, 344, 62, 36],
-					[317, 344, 62, 36],
-					[0, 382, 62, 36], //61
-					[63, 382, 62, 36],
-					[127, 382, 62, 36],
-					[191, 382, 62, 36],
-					[254, 382, 62, 36],
-					[317, 382, 62, 36],
-					[0, 420, 62, 36], //67
-					[63, 420, 62, 36],
-					[127, 420, 62, 36],
-					[190, 420, 62, 36]
+					// [317, 306, 62, 36] //54
 				],
 				// define two animations, run (loops, 1.5x speed) and jump (returns to run):
 				animations: {
 					//start. end, next, speed
 					// "normal": [0, 0, "normal", 1], //still
 					"stare": {
-						frames: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+						frames: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "blink"],
 						 next: "blink",
 						 speed: .2
 					},
 					"stare-13": {
-						frames: [12, 12, 12, 12, 12, 12, 12, 12, 12, 12],
+						frames: [12, 12, 12, 12, 12, 12, 12, "blink-13"],
 						next: "blink-13",
-						speed: .2
-					},
-					"stare-bleach": {
-						frames: [23, 23, 23, 23, 23, 23, 23, 23, 23, 23],
-						next: "blink-bleach",
 						speed: .2
 					},
 					"blink": {
@@ -124,16 +103,11 @@
 					},
 					"blink-13": {
 						frames: [48, 49, 48],
-						next: "stare-13",
-						speed: .7
-					},
-					"blink-bleach": {
-						frames: [68, 69, 68],
-						next: "stare-bleach",
+						next: "blink-13",
 						speed: .7
 					},
 					"bleach-13": [0, 12, "stare-13", .9],
-					"bleach": [0, 23, "stare-bleach", 1]
+					"bleach": [0, 23, "stare", 1]
 				}
 			});
 
@@ -152,7 +126,7 @@
 		stage.addEventListener("stagemousedown", handleJumpStart);
 
 		function handleJumpStart() {
-			grant.gotoAndPlay("bleach");
+			grant.gotoAndPlay("bleach-13");
 		}
 
 		// Add Grant to the stage, and add it as a listener to Ticker to get updates each frame.
