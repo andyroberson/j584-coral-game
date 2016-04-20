@@ -45,6 +45,25 @@ buttonText = new createjs.Text();
       buttonText.font = "25px arial";
       buttonText.x = 27;
       buttonText.y = 7;
+
+// startButton.on("click", function (evt) {
+//       if (activeControl == "light") {
+//         //update coral according to light
+//       }
+//
+//       if (activeControl == "temp") {
+//         //update coral according to temp
+//       }
+//
+//       if (activeControl == "carbon") {
+//         //update coral according to carbon
+//       }
+//
+//       if (activeControl == "food") {
+//         //add food items to da arrays,
+//         //update coral according to food
+//       }
+// }
 // //container to log all actions
 //  actionLog = new createjs.Container();
 //      actionLog.x = (tankContainer.width/4)

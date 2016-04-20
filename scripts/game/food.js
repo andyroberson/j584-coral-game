@@ -11,35 +11,35 @@ function createFood() {
       foodContainerBg.x = 0;
       foodContainerBg.y = 0;
 
- var foodButtonBg = new createjs.Shape();
-     foodButtonBg.graphics.beginFill("White").drawCircle(33, 48, 21);
-     foodButtonBg.cursor = "pointer";
-
- var foodButtonBg2 = new createjs.Shape();
-     foodButtonBg2.graphics.beginFill("White").drawCircle(33, 94, 21);
-     foodButtonBg2.cursor = "pointer";
-
- var foodButtonBg3 = new createjs.Shape();
-     foodButtonBg3.graphics.beginFill("White").drawCircle(33, 141, 21);
-     foodButtonBg3.cursor = "pointer";
+ // var foodButtonBg = new createjs.Shape();
+ //     foodButtonBg.graphics.beginFill("White").drawCircle(33, 48, 21);
+ //     foodButtonBg.cursor = "pointer";
+ //
+ // var foodButtonBg2 = new createjs.Shape();
+ //     foodButtonBg2.graphics.beginFill("White").drawCircle(33, 94, 21);
+ //     foodButtonBg2.cursor = "pointer";
+ //
+ // var foodButtonBg3 = new createjs.Shape();
+ //     foodButtonBg3.graphics.beginFill("White").drawCircle(33, 141, 21);
+ //     foodButtonBg3.cursor = "pointer";
 
   //creating food button;
-  var foodButton = new createjs.Bitmap("assets/shrimp1.png");
-      foodButton.x = 25;
-      foodButton.y = 38;
+  var foodButton = new createjs.Bitmap("assets/shrimp-button1.png");
+      foodButton.x = 14;
+      foodButton.y = 26;
       foodButton.cursor = "pointer";
       // foodButton.width = tankWidth / 10;
       // foodButton.height = menuHeight / 2;
       // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
 
-var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
-     foodButton2.x = 18;
-     foodButton2.y = 82;//(switchContainer.height + 10 + 20);
+var foodButton2 = new createjs.Bitmap("assets/shrimp-button2.png");
+     foodButton2.x = 14;
+     foodButton2.y = 73;//(switchContainer.height + 10 + 20);
      foodButton2.cursor = "pointer";
 
-var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
-     foodButton3.x = 16;
-     foodButton3.y = 124;//(switchContainer.height + 10 + 20);
+var foodButton3 = new createjs.Bitmap("assets/shrimp-button3.png");
+     foodButton3.x = 14;
+     foodButton3.y = 120;//(switchContainer.height + 10 + 20);
      foodButton3.cursor = "pointer";
 
      littleFood = false;
@@ -51,9 +51,9 @@ var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
 function makeFood() {
     leftControlMenu.addChild(foodContainer);
     foodContainer.addChild(foodContainerBg);
-    foodContainer.addChild(foodButtonBg);
-    foodContainer.addChild(foodButtonBg2);
-    foodContainer.addChild(foodButtonBg3);
+    // foodContainer.addChild(foodButtonBg);
+    // foodContainer.addChild(foodButtonBg2);
+    // foodContainer.addChild(foodButtonBg3);
     foodContainer.addChild(foodButton);
     foodContainer.addChild(foodButton2);
     foodContainer.addChild(foodButton3);
