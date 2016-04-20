@@ -43,6 +43,10 @@ var foodArr = [];
 var foodArr2 = [];
 var foodArr3 = [];
 
+var foodButton;
+var foodButton2;
+var foodButton3;
+
 var activeControl; //changes depending on which control is being manipulated; can be temp, light, carbon, or food
 var startTemp;
 var startLight;

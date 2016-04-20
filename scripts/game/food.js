@@ -12,7 +12,7 @@ function createFood() {
       foodContainerBg.y = 0;
 
   //creating food button;
-  var foodButton = new createjs.Bitmap("assets/shrimp-button1.png");
+  foodButton = new createjs.Bitmap("assets/shrimp-button1.png");
       foodButton.x = 14;
       foodButton.y = 26;
       foodButton.cursor = "pointer";
@@ -21,13 +21,13 @@ function createFood() {
       // foodButton.height = menuHeight / 2;
       // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
 
-var foodButton2 = new createjs.Bitmap("assets/shrimp-button2.png");
+foodButton2 = new createjs.Bitmap("assets/shrimp-button2.png");
      foodButton2.x = 14;
      foodButton2.y = 73;//(switchContainer.height + 10 + 20);
      foodButton2.cursor = "pointer";
      foodButton2.alpha = .7;
 
-var foodButton3 = new createjs.Bitmap("assets/shrimp-button3.png");
+foodButton3 = new createjs.Bitmap("assets/shrimp-button3.png");
      foodButton3.x = 14;
      foodButton3.y = 120;//(switchContainer.height + 10 + 20);
      foodButton3.cursor = "pointer";

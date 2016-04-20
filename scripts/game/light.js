@@ -26,6 +26,7 @@ function createLight() {
 		updateEffect(evt.target.value);
         //if this is being changed, then light is activeControl
         activeControl = "light";
+        resetFood();
         resetTemp();
         resetCarbon();
         //ßcontrol.log(activeControl);
