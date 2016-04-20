@@ -62,8 +62,10 @@ foodButton.on("click", function (evt) {
 
       if (evt.nativeEvent.button >= 0) {
           littleFood = true;
+          moreFood = false;
+          mostFood = false;
           findActiveControl();
-          $( "#test" ).append( "<br>We added a more food which means the coral might still be hungry");
+
       }
 
 stage.update();
@@ -79,9 +81,9 @@ foodButton2.on("click", function (evt) {
 
       if (evt.nativeEvent.button >= 0) {
           moreFood = true;
+          littleFood = false;
+          mostFood = false;
           findActiveControl();
-          console.log("moreFood");
-          $( "#test" ).append( "<br>We added a more food which means the coral is probably happy");
       }
 
 stage.update();
@@ -97,46 +99,12 @@ foodButton3.on("click", function (evt) {
 
       if (evt.nativeEvent.button >= 0) {
           mostFood = true;
+          littleFood = false;
+          moreFood = false;
           findActiveControl();
-          console.log("mostFood");
-          $( "#test" ).append( "<br>We added a lot of food which means the coral is probably overfed");
       }
 stage.update();
 });
-
-//add IF for start button is true and the active value is food
-
-//add appropriate food image based on which value is true (which is set depending on which button was clicked)
-
-// function makeNewFood() {
-//   if (startFood == true) {
-//       if (littleFood == true) {
-//             foodArr.push(new createjs.Bitmap("assets/shrimp-sm.gif"));
-//             console.log("We just added a little bit of food");
-//       }
-//
-//       if (moreFood == true) {
-//             foodArr.push(new createjs.Bitmap("assets/shrimp-md.gif"));
-//             console.log("We just added more food");
-//       }
-//
-//       if (mostFood == true) {
-//             foodArr.push(new createjs.Bitmap("assets/shrimp-lg.gif"));
-//             console.log("We just added the MOST food");
-//       }
-//
-//       for (var i = 0; i < foodArr; i ++) {
-//         foodArr[i].x = 200;
-//         foodArr[i].y = 0;
-//       }
-//
-//       console.log(foodArr[i].x);
-//
-//       makeDraggable(foodArr[i]);
-//       tankContainer.addChild(foodArr[i]);
-//       stage.update();
-//   }
-// };
 
     //Update stage will render next frame this is for animating food
     createjs.Ticker.framerate = 40;
@@ -162,34 +130,33 @@ stage.update();
           foodArr[i].y += ((yP - foodArr[i].y)/60);
           stage.update();
 
-          // foodCollision = testCollision(coral,foodArr[i]);
-          // if (foodCollision == true) {
-          //
-          //   //remove food because it got eaten
-          //   tankContainer.removeChild(foodArr[i]);
-          //   foodArr.splice(foodArr[i], 1);
-          //   console.log("coral 1 ate the food");
-          //   //update stage to reflect removed food
-          //   stage.update();
-          // }
-
           foodCollision2 = testCollision(coral2,foodArr[i]);
           if (foodCollision2 == true) {
 
             tankContainer.removeChild(foodArr[i]);
             foodArr.splice(foodArr[i], 1);
-            console.log("coral 2 ate the food");
+            console.log("coral ate the food");
 
             if (littleFood == true) {
               fullBleach();
+              experiment++;
+              $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red Bleached!</b>"
+              + "<br>After 30 days, <u>too little food</u> starved Big Red. He can get some nutrients from photosynthesis, but still needs"
+              + " food like microscopic shrimp to keep him healthy." );
             }
 
             if (moreFood == true) {
               coralReset();
+              experiment++;
+              $( "#results" ).append("<br>Experiment " + experiment + ": <b>No bleaching</b>"
+              + "<br>We're currently giving Big Red a medium amount of food, which seems to be keeping him happy." );
             }
 
             if (mostFood == true) {
               coralReset();
+              experiment++;
+              $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
+              + "<br>More food just means more nutrients for Big Red, so no bleaching occurred. It's hard to overfeed this guy!" );
             }
 
             resetFoodValues();

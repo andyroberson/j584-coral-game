@@ -49,6 +49,7 @@ var startLight;
 var startCarbon;
 var startFood;
 var startClicked;
+var experiment = 0;
 
   function init() {
     console.log("init");
@@ -121,13 +122,13 @@ function updateValues(activeControl) {
    if (activeControl == "light") {
      resetCarbon();
      resetTemp();
-     //resetFood();
+     resetFood();
      stage.update();
    }
 
    if (activeControl == "temp") {
      resetCarbon();
-     //resetFood();
+     resetFood();
      resetLight();
      carbon = .04;
      console.log("Carbon is: " + carbon);
@@ -137,7 +138,7 @@ function updateValues(activeControl) {
    if (activeControl == "carbon") {
      resetTemp();
      resetLight();
-     //resetFood()
+     resetFood()
      stage.update();
    }
  }
@@ -157,6 +158,12 @@ function updateValues(activeControl) {
    degrees = 82;
    temperature.text = degrees;
    stage.update();
+ }
+
+ function resetFood() {
+   littleFood = false;
+   moreFood = false;
+   mostFood = false;
  }
 
  function findActiveControl() {
@@ -180,10 +187,6 @@ function updateValues(activeControl) {
      startClicked = false;
    }
  }
-
- // function resetFood() {
- //
- // }
 
  function makeNewFood() {
        if (littleFood == true) {
@@ -217,54 +220,96 @@ function updateValues(activeControl) {
  function detectCarbon() {
    //coral high coral happy
        if (carbon < .03) {
+         experiment++;
+         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
+         + "<br>After 30 days in this water, you can definitely tell that Big Red bleached. Though lower acidity is usually better, Big Red bleached because he doesn't handle drastic changes (such as the change in carbon dioxide) well."
+         );
+         startClicked = false;
          fullBleach();
        }
 
        if (carbon == .03) {
+         experiment++;
+         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+         + "<br>This percentage of carbon dioxide is close to the level of ocean acidity prior to the industrial revolution, which was .028%."
+         + " Lower acidity, like what you selected, is almost always better, but Big Red still bleached a little because he's sensitive to change.");
+         startClicked = false;
          lowBleach();
        }
 
        if (carbon == .04) {
+         experiment++;
+         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy.</b>"
+         + "<br>This was the recommended carbon dioxide setting for Big Red, and he didn't bleach.");
+         startClicked = false;
          coralReset();
        }
 
-       //coral high coral happy
+       //carbon rising, sad coral
        if ((carbon > .04) && (carbon < .06)) {
+         experiment++;
+         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+         + "<br>This CO2 level is too high. This is what scientists predict the ocean’s acidity will be like in a century if humans continue become more environmentally conscious and slow their pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
+         + "but there is hope that he would adapt if this number increased slowly over more time.");
+         startClicked = false;
          lowBleach();
        }
 
-       if (carbon == .06) {
+       if (carbon >= .06) {
+         experiment++;
+         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
+         +  "<br>This CO2 level is way too high! This is what scientists predict the ocean’s acidity will be like in a century if humans continue at their current pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
+          + "but there is hope that he would adapt if this number increased slowly over more time and he could slowly get used to the change");
+          startClicked = false;
          fullBleach();
+
        }
 
-       if (carbon > .06) {
-         fullBleach();
-       }
  }
 
 
  function detectTemp() {
    //if the degrees are super low, coral bleach
    if (degrees <= 75) {
+     experiment++;
+      $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
+      + "<br>Big Red is very picky about temperatures and doesn’t like to be too cold. " );
+      startClicked = false;
      fullBleach();
    }
 
    //coral bleach
    if ((degrees > 75) && (degrees < 81)) {
+     experiment++;
+      $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached a little</b>"
+      + "<br>Big Red was a bit too cold, and after 30 days in water of this temperature, he started bleaching." );
+      startClicked = false;
      lowBleach();
    }
 
    //coral high coral happy
    if (degrees == 82) {
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
+     + "<br>This is the recommended temperature for Big Red and he stayed happy in water at this temperature." );
+     startClicked = false;
      coralReset();
    }
 
    //coral high coral happy
    if ((degrees > 82) && (degrees < 89)) {
-     lowBleach();
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached</b>"
+     + "<br>The water was too warm for Big Red, and he bleached during your 30-day lab experiment." );
+     startClicked = false;
+     highBleach();
    }
 
    if (degrees > 88) {
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached</b>"
+     + "<br>Big Red was really hot in water of this temperature and was very bleached after 30 days of living in it." );
+     startClicked = false;
      fullBleach();
    }
 
@@ -272,17 +317,29 @@ function updateValues(activeControl) {
 
  function detectLightLevel() {
    if (lightSwitch.value < 25) {
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached a bit</b>"
+     + "<br>Big Red needs light for photosynthesis, which is a source of nutrition. Feeling hungry makes him start to bleach." );
+     startClicked = false;
      lowBleach();
      stage.update();
    }
 
    if (lightSwitch.value >= 25 && lightSwitch.value < 75) {
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red didn't bleach!/b>"
+     + "<br>This is the recommended setting for light and Big Red didn't bleach." );
+     startClicked = false;
      coralReset();
      stage.update();
    }
 
    //light switch high, show bright light
    else if (lightSwitch.value >= 75 && lightSwitch.value < 101) {
+     experiment++;
+     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+     + "<br>Extra light means extra food for Big Red since he uses it for photosynthesis, so it may seem strange that he bleached. This happened because the extra heat from the light made him too hot." );
+     startClicked = false;
      lowBleach();
      stage.update();
    }

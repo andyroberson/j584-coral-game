@@ -44,7 +44,7 @@ function createTemp() {
       temperature.text = degrees;
 
       activeControl = "temp";
-      //resetFood();
+      resetFood();
       resetLight();
       resetCarbon();
       console.log(activeControl);
@@ -62,7 +62,7 @@ function createTemp() {
         temperature.text = degrees;
 
         activeControl = "temp";
-        //resetFood();
+        resetFood();
         resetLight();
         resetCarbon();
         console.log(activeControl);
