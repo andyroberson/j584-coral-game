@@ -168,16 +168,16 @@ function makeNewFood() {
           foodArr[i].y += ((yP - foodArr[i].y)/60);
           stage.update();
 
-          foodCollision = testCollision(coral,foodArr[i]);
-          if (foodCollision == true) {
-
-            //remove food because it got eaten
-            tankContainer.removeChild(foodArr[i]);
-            foodArr.splice(foodArr[i], 1);
-            console.log("coral 1 ate the food");
-            //update stage to reflect removed food
-            stage.update();
-          }
+          // foodCollision = testCollision(coral,foodArr[i]);
+          // if (foodCollision == true) {
+          //
+          //   //remove food because it got eaten
+          //   tankContainer.removeChild(foodArr[i]);
+          //   foodArr.splice(foodArr[i], 1);
+          //   console.log("coral 1 ate the food");
+          //   //update stage to reflect removed food
+          //   stage.update();
+          // }
 
           foodCollision2 = testCollision(coral2,foodArr[i]);
           if (foodCollision2 == true) {
@@ -188,14 +188,14 @@ function makeNewFood() {
             stage.update();
           }
 
-          foodCollision3 = testCollision(coral3,foodArr[i]);
-          if (foodCollision3 == true) {
-            tankContainer.removeChild(foodArr[i]);
-            foodArr.splice(foodArr[i], 1);
-            console.log("coral 3 ate the food");
-
-            stage.update();
-          }
+          // foodCollision3 = testCollision(coral3,foodArr[i]);
+          // if (foodCollision3 == true) {
+          //   tankContainer.removeChild(foodArr[i]);
+          //   foodArr.splice(foodArr[i], 1);
+          //   console.log("coral 3 ate the food");
+          //
+          //   stage.update();
+          // }
       }
 
     } //end makeFood function

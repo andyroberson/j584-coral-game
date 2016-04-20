@@ -24,6 +24,7 @@ var rightControls;
 var tankContainer;
 var coral;
 var coral2;
+var coralIntersect;
 var thecontrols;
 var lightSwitch;
 var switchContainer;
