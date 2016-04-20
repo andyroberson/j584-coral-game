@@ -31,7 +31,8 @@ function createCarbon() {
       var carbon = .04;
 
       var upArrow2 = new createjs.Shape();
-      upArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
+          upArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
+          upArrow2.cursor = "pointer";
 
       //increasing the temperature
       upArrow2.addEventListener("click", function (evt) {
@@ -47,6 +48,7 @@ function createCarbon() {
 
       var downArrow2 = new createjs.Shape();
       downArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(14/17)), (tempWidth*(1/6)), 3, 0, 90);
+                downArrow2.cursor = "pointer";
 
       downArrow2.addEventListener("click", function (evt) {
         carbon = carbon - .01;

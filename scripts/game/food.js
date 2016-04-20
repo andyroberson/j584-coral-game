@@ -13,17 +13,21 @@ function createFood() {
 
  var foodButtonBg = new createjs.Shape();
      foodButtonBg.graphics.beginFill("White").drawCircle(33, 48, 21);
+     foodButtonBg.cursor = "pointer";
 
  var foodButtonBg2 = new createjs.Shape();
      foodButtonBg2.graphics.beginFill("White").drawCircle(33, 94, 21);
+     foodButtonBg2.cursor = "pointer";
 
  var foodButtonBg3 = new createjs.Shape();
      foodButtonBg3.graphics.beginFill("White").drawCircle(33, 141, 21);
+     foodButtonBg3.cursor = "pointer";
 
   //creating food button;
   var foodButton = new createjs.Bitmap("assets/shrimp1.png");
       foodButton.x = 25;
       foodButton.y = 38;
+      foodButton.cursor = "pointer";
       // foodButton.width = tankWidth / 10;
       // foodButton.height = menuHeight / 2;
       // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
@@ -31,10 +35,12 @@ function createFood() {
 var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
      foodButton2.x = 18;
      foodButton2.y = 82;//(switchContainer.height + 10 + 20);
+     foodButton2.cursor = "pointer";
 
 var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
      foodButton3.x = 16;
      foodButton3.y = 124;//(switchContainer.height + 10 + 20);
+     foodButton3.cursor = "pointer";      
 
      littleFood = false;
      moreFood = false;
@@ -186,7 +192,7 @@ function makeNewFood() {
             if (littleFood == true) {
               fullBleach();
             }
-            
+
             resetFoodValues();
             stage.update();
           }

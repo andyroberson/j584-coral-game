@@ -16,7 +16,8 @@ function createLight() {
 		    lightSwitch.on("change", handleSliderChange, this);
 
         //rotate slider to be like a light switch
-        lightSwitch.rotation=90;
+        lightSwitch.rotation = 90;
+        lightSwitch.cursor = "pointer";
 
 		updateEffect(lightSwitch.value);
 

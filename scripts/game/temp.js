@@ -35,7 +35,8 @@ function createTemp() {
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
   var upArrow = new createjs.Shape();
-  upArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
+      upArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
+      upArrow.cursor = "pointer";
 
   //increasing the temperature
   upArrow.addEventListener("click", function (evt) {
@@ -48,16 +49,17 @@ function createTemp() {
   });
 
   var downArrow = new createjs.Shape();
-  downArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(10/12)), (tempWidth*(1/6)), 3, 0, 90);
+      downArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(10/12)), (tempWidth*(1/6)), 3, 0, 90);
+      downArrow.cursor = "pointer";
 
-  downArrow.addEventListener("click", function (evt) {
-    degrees = degrees - 1;
-    // degrees = Math.round(degrees * 100) / 100;
-    temperature.text = degrees;
+      downArrow.addEventListener("click", function (evt) {
+        degrees = degrees - 1;
+        // degrees = Math.round(degrees * 100) / 100;
+        temperature.text = degrees;
 
-    detectTemp();
-    stage.update();
-  });
+        detectTemp();
+        stage.update();
+      });
 
   function detectTemp() {
     //if the degrees are super low, coral bleach
