@@ -40,7 +40,7 @@ var foodButton2 = new createjs.Bitmap("assets/shrimp2.png");
 var foodButton3 = new createjs.Bitmap("assets/shrimp3.png");
      foodButton3.x = 16;
      foodButton3.y = 124;//(switchContainer.height + 10 + 20);
-     foodButton3.cursor = "pointer";      
+     foodButton3.cursor = "pointer";
 
      littleFood = false;
      moreFood = false;
@@ -87,6 +87,12 @@ function resetFoodValues() {
 //when the mouse is clicked, set the appropriate value to true  and make new Food
 //little shrimp
 foodButton.on("click", function (evt) {
+
+      activeControl = "food";
+      resetLight();
+      resetCarbon();
+      resetTemp();
+
       if (evt.nativeEvent.button >= 0) {
           littleFood = true;
           makeNewFood();
@@ -97,6 +103,12 @@ stage.update();
 
 //more shrimp
 foodButton2.on("click", function (evt) {
+
+      activeControl = "food";
+      resetLight();
+      resetCarbon();
+      resetTemp();
+
       if (evt.nativeEvent.button >= 0) {
           moreFood = true;
           makeNewFood();
@@ -108,6 +120,12 @@ stage.update();
 
 //most shrimp
 foodButton3.on("click", function (evt) {
+
+      activeControl = "food";
+      resetLight();
+      resetCarbon();
+      resetTemp();
+
       if (evt.nativeEvent.button >= 0) {
           mostFood = true;
           makeNewFood();
@@ -191,6 +209,14 @@ function makeNewFood() {
 
             if (littleFood == true) {
               fullBleach();
+            }
+
+            if (moreFood == true) {
+              coralReset();
+            }
+
+            if (mostFood == true) {
+              coralReset();
             }
 
             resetFoodValues();

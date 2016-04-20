@@ -30,7 +30,7 @@ function createTemp() {
       screenWidth = screenContainer.width;
       screenContainer.setBounds(screenContainer.x, screenContainer.y, screenContainer.width, screenContainer.height);
 
-  var degrees = 82;
+  degrees = 82;
 
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
@@ -41,8 +41,13 @@ function createTemp() {
   //increasing the temperature
   upArrow.addEventListener("click", function (evt) {
       degrees = degrees + 1;
-      // degrees = Math.round(degrees * 100) / 100;
       temperature.text = degrees;
+
+      activeControl = "temp";
+      //resetFood();
+      resetLight();
+      resetCarbon();
+      console.log(activeControl);
 
       detectTemp();
       stage.update();
@@ -54,8 +59,13 @@ function createTemp() {
 
       downArrow.addEventListener("click", function (evt) {
         degrees = degrees - 1;
-        // degrees = Math.round(degrees * 100) / 100;
         temperature.text = degrees;
+
+        activeControl = "temp";
+        //resetFood();
+        resetLight();
+        resetCarbon();
+        console.log(activeControl);
 
         detectTemp();
         stage.update();
@@ -88,7 +98,7 @@ function createTemp() {
 
   }
   //creating and styling temperature text
-  var temperature = new createjs.Text();
+  temperature = new createjs.Text();
       temperature.text = (degrees);
       temperature.color = "#fff";
       temperature.font = "15px arial";

@@ -24,12 +24,17 @@ var rightControls;
 var tankContainer;
 var coral;
 var coral2;
+var temperature;
+var degrees;
 var coralIntersect;
 var thecontrols;
 var lightSwitch;
 var switchContainer;
+var screenContainer2;
 var switchBackground;
 var tempContainer;
+var carbonDisplay;
+var carbon;
 
 var littleFood;
 var moreFood;
@@ -37,6 +42,8 @@ var mostFood;
 var foodArr = [];
 var foodArr2 = [];
 var foodArr3 = [];
+
+var activeControl; //changes depending on which control is being manipulated; can be temp, light, carbon, or food
 
 
   function init() {
@@ -92,7 +99,7 @@ function fullBleach() {
 
 //fully bleach coral
  function highBleach() {
-    coral2.gotoAndPlay("bleach-19");
+  coral2.gotoAndPlay("bleach-19");
  }
 
  //partially bleach coral
@@ -104,6 +111,53 @@ function fullBleach() {
  function coralReset() {
    coral2.gotoAndPlay("stare");
  }
+createjs.Ticker.addEventListener("tick", updateValues);
+
+function updateValues(activeControl) {
+   if (activeControl == "light") {
+     resetCarbon();
+     resetTemp();
+     //resetFood();
+     stage.update();
+   }
+
+   if (activeControl == "temp") {
+     resetCarbon();
+     //resetFood();
+     resetLight();
+     carbon = .04;
+     console.log("Carbon is: " + carbon);
+     stage.update();
+   }
+
+   if (activeControl == "carbon") {
+     resetTemp();
+     resetLight();
+     //resetFood()
+     stage.update();
+   }
+ }
+
+ function resetCarbon() {
+   carbon = .04;
+   carbonDisplay.text = carbon;
+   stage.update();
+ }
+
+ function resetLight() {
+   lightSwitch.value = 50;
+   stage.update();
+ }
+
+ function resetTemp() {
+   degrees = 82;
+   temperature.text = degrees;
+   stage.update();
+ }
+
+ // function resetFood() {
+ //
+ // }
 
 //make things draggable make anything draggable with makeDraggable(yourItemHere);
 function makeDraggable(o) {

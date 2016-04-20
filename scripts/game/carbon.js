@@ -14,7 +14,7 @@ function createCarbon() {
           carbonBackground.y = 0;
 
       //container for screen that shows carbon (2nd screencontainer because temp had one too)
-      var screenContainer2 = new createjs.Container();
+      screenContainer2 = new createjs.Container();
           screenContainer2.x = (carbonWidth * (1/7));
           screenContainer2.y = (carbonHeight * (1/4));
           screenContainer2.width = (carbonWidth * (1/2));
@@ -28,7 +28,7 @@ function createCarbon() {
       // var carbonScreen = new createjs.Shape();
       //     carbonScreen.graphics.beginFill("#EEE").drawRect(screenContainer2.x, screenContainer2.y, screenWidth2, screenHeight2);
 
-      var carbon = .04;
+      carbon = .04;
 
       var upArrow2 = new createjs.Shape();
           upArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
@@ -40,9 +40,14 @@ function createCarbon() {
           carbon = Math.round(carbon * 100) / 100;
           carbonDisplay.text = carbon;
 
+          activeControl = "carbon";
+          //resetFood();
+          resetLight();
+          resetTemp();
+          console.log(activeControl);
+
 
           detectCarbon();
-
           stage.update();
       });
 
@@ -54,8 +59,15 @@ function createCarbon() {
         carbon = carbon - .01;
         carbon = Math.round(carbon * 100) / 100;
         carbonDisplay.text = carbon;
-        detectCarbon();
 
+        activeControl = "carbon";
+        //resetFood();
+        resetLight();
+        resetTemp();
+        console.log(activeControl);
+
+
+        detectCarbon();
         stage.update();
       });
 
@@ -88,7 +100,7 @@ function createCarbon() {
       }
 
       //creating and styling carbondisplay text
-      var carbonDisplay = new createjs.Text();
+      carbonDisplay = new createjs.Text();
           carbonDisplay.text = (carbon);
           carbonDisplay.color = "#fff";
           carbonDisplay.font = "15px arial";

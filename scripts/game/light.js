@@ -24,6 +24,11 @@ function createLight() {
   //handling light switch changes
 	function handleSliderChange(evt) {
 		updateEffect(evt.target.value);
+        //if this is being changed, then light is activeControl
+        activeControl = "light";
+        resetTemp();
+        resetCarbon();
+        //ßcontrol.log(activeControl);
 
         //if slider light switch is below 25, keep it off
     		if (lightSwitch.value < 25) {
@@ -63,7 +68,10 @@ function createLight() {
         }
 	  }
 
-    // function resetLight()
+    function resetLight() {
+      lightSwitch.value = 50;
+      updateEffect(lightSwitch.value);
+    }
 
     makeLight();
 
