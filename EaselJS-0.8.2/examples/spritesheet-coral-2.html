@@ -21,7 +21,7 @@
 		stage = new createjs.Stage(document.getElementById("testCanvas"));
 
 		// Define a spritesheet. Note that this data was exported by Zoë.
-		var spriteSheet = new createjs.SpriteSheet({
+		var coralSprite1 = new createjs.SpriteSheet({
 				framerate: 13,
 				numFrames: 70,
 				images: ["coral1-final-spritesheet-sm.png"],
@@ -158,12 +158,12 @@
 			});
 
 		// Events from SpriteSheet (not required for the demo)
-		spriteSheet.on("complete", function(event) {
-			console.log("Complete", event);
-		});
-		spriteSheet.on("error", function(event) {
-			console.log("Error", event);
-		});
+		// spriteSheet.on("complete", function(event) {
+		// 	console.log("Complete", event);
+		// });
+		// spriteSheet.on("error", function(event) {
+		// 	console.log("Error", event);
+		// });
 
 		var grant = new createjs.Sprite(spriteSheet, "stare");
 		grant.x = stage.canvas.width / 2;

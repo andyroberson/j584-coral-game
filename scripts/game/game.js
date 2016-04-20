@@ -23,6 +23,7 @@ var rightControlMenu;
 var rightControls;
 var tankContainer;
 var coral;
+var coral2;
 var thecontrols;
 var lightSwitch;
 var switchContainer;
