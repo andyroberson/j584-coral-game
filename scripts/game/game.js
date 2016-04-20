@@ -44,7 +44,11 @@ var foodArr2 = [];
 var foodArr3 = [];
 
 var activeControl; //changes depending on which control is being manipulated; can be temp, light, carbon, or food
-
+var startTemp;
+var startLight;
+var startCarbon;
+var startFood;
+var startClicked;
 
   function init() {
     console.log("init");
@@ -155,9 +159,66 @@ function updateValues(activeControl) {
    stage.update();
  }
 
+ function findActiveControl() {
+   if (activeControl == "light") {
+     startLight = true;
+     startTemp = false;
+     startCarbon = false;
+     startFood = false;
+   }
+
+   if (activeControl == "temp") {
+     startTemp = true;
+     startLight = false;
+     startCarbon = false;
+     startFood = false;
+   }
+
+   if (activeControl == "carbon") {
+     startCarbon = true;
+     startTemp = false;
+     startLight = false;
+     startFood = false;
+   }
+
+   if ((activeControl == "food") && startClicked == true) {
+     makeNewFood();
+     startClicked = false;
+   }
+ }
+
  // function resetFood() {
  //
  // }
+
+ function makeNewFood() {
+       if (littleFood == true) {
+             foodArr.push(new createjs.Bitmap("assets/shrimp-sm.gif"));
+             console.log("We just added a little bit of food");
+       }
+
+       if (moreFood == true) {
+             foodArr.push(new createjs.Bitmap("assets/shrimp-md.gif"));
+             console.log("We just added more food");
+       }
+
+       if (mostFood == true) {
+             foodArr.push(new createjs.Bitmap("assets/shrimp-lg.gif"));
+             console.log("We just added the MOST food");
+       }
+
+       for (var i = 0; i < foodArr; i ++) {
+         foodArr[i].x = 200;
+         foodArr[i].y = 0;
+       }
+
+       console.log(foodArr[i].x);
+
+       makeDraggable(foodArr[i]);
+       tankContainer.addChild(foodArr[i]);
+       stage.update();
+
+ };
 
 //make things draggable make anything draggable with makeDraggable(yourItemHere);
 function makeDraggable(o) {
