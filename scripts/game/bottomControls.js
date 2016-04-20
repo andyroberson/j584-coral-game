@@ -47,32 +47,42 @@ buttonText = new createjs.Text();
       buttonText.y = 7;
 
 startButton.on("click", function (evt) {
+      console.log(activeControl);
+      if (activeControl == null) {
+            //alert("change a control before you press start");
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            var button = document.getElementsByClassName("close-button")[0];
+
+            modal.style.display = "block";
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            button.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+      }
+    }
+
+      else {
       startClicked = true;
       findActiveControl();
+    }
 });
-// //container to log all actions
-//  actionLog = new createjs.Container();
-//      actionLog.x = (tankContainer.width/4)
-//      actionLog.y = 20;
-//      actionLog.width = (tankContainer.width/2);
-//      actionLog.height = (menuHeight - 40);
-//      actionLog.setBounds(actionLog.x, actionLog.y, actionLog.width, actionLog.height);
-//
-// //actionLog background
-// actionLogBG = new createjs.Shape();
-//     actionLogBG.graphics.drawRect(0, 0, actionLog.width, actionLog.height);
-//
-// var logTitle = new createjs.Text();
-//     logTitle.text = "Notes"
-//     logTitle.color = "#666";
-//     logTitle.font = "bold 20px arial";
-//     logTitle.x = (actionLog.width/3 + 10);
-//     logTitle.y = 5;
-//
-//     $( "#bottom-aquarium" ).css({width: controlsMenu.width});
-//     $( "#test" ).css({top: controlsMenu.y + 60, left: logTitle.x + 270, width: actionLog.width});
-//     $( "#test" ).append( "the height is " + tankHeight);
-
 
      makeBottomControls();
 

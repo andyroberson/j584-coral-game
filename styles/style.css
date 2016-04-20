@@ -1,5 +1,6 @@
 body {
   background: #fff;
+  font-family: 'arial', sans-serif;
 }
 
 .container {
@@ -16,6 +17,7 @@ h1 {
   font-weight: normal;
   color: #fff;
   border-bottom: solid 1px #fff;
+  margin-bottom: 3px;
 }
 
 /*game canvas; what every part of the game is contained in*/
@@ -47,7 +49,7 @@ h1 {
   display: inline-block;
 }
 
-#log {
+#results {
   margin-left: auto;
   margin-right: auto;
   font-family: arial;
@@ -59,4 +61,88 @@ h1 {
   padding: 5px;
   max-height: 120px;
   overflow: auto;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fff;
+    opacity: .9;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 15% auto; /* 15% from the top and centered */
+    width: 320px; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+}
+
+/* The Close Button */
+.close {
+    float: right;
+    padding: 5px;
+    padding-right: 7px;
+    padding-left: 7px;
+    color: rgba(255,255,255,0.8) !important;
+    background: #985242;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    border-bottom: none !important;
+    -webkit-transition: ease .7s;
+    transition: ease .7s;
+
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .9;
+}
+
+.close-button {
+  margin-top: 2px;
+  margin-bottom: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 1px;
+  width: auto;
+  padding: 6px 18px 4px;
+  font-size: 13px;
+  text-decoration: none;
+  color: rgb(255,255,255);
+  border: solid 1px rgb(0,60,180);
+  background: teal;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.close-button:hover {
+  color: rgb(255,255,255) !important;
+  border: solid 1px rgb(0,60,180) !important;
+  background: rgb(43,128,255);
+  cursor: pointer;
+}
+
+h3 {
+  line-height: 1.25;
+  margin: 0;
+  font-weight: bold;
+  color: #DC785B;
+  font-size: 22px;
 }

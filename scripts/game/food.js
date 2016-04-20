@@ -152,23 +152,26 @@ stage.update();
             if (littleFood == true) {
               fullBleach();
               experiment++;
-              $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red Bleached!</b>"
+              $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red Bleached!</b>"
               + "<br>After 30 days, <u>too little food</u> starved Big Red. He can get some nutrients from photosynthesis, but still needs"
               + " food like microscopic shrimp to keep him healthy." );
+                   $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
             }
 
             if (moreFood == true) {
               coralReset();
               experiment++;
-              $( "#results" ).append("<br>Experiment " + experiment + ": <b>No bleaching</b>"
+              $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>No bleaching</b>"
               + "<br>We're currently giving Big Red a medium amount of food, which seems to be keeping him happy." );
+                   $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
             }
 
             if (mostFood == true) {
               coralReset();
               experiment++;
-              $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
+              $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
               + "<br>More food just means more nutrients for Big Red, so no bleaching occurred. It's hard to overfeed this guy!" );
+                   $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
             }
 
             resetFoodValues();

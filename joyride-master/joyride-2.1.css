@@ -168,14 +168,6 @@ body {
   text-decoration: none;
   color: rgb(255,255,255);
   border: solid 1px rgb(0,60,180);
-  /*background: rgb(0,99,255);
-  background: -moz-linear-gradient(top, rgb(0,99,255) 0%, rgb(0,85,214) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(0,99,255)), color-stop(100%,rgb(0,85,214)));
-  background: -webkit-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  background: -o-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  background: -ms-linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0063ff', endColorstr='#0055d6',GradientType=0 );
-  background: linear-gradient(top, rgb(0,99,255) 0%,rgb(0,85,214) 100%);*/
   background: teal;
   -webkit-transition: .3s ease;
   transition: .3s ease;

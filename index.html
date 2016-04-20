@@ -34,6 +34,7 @@
     <!-- styling sheet -->
     <link rel="stylesheet" href="styles/style.css">
 
+
   </head>
   <body>
     <div class="container">
@@ -42,13 +43,10 @@
     </div>
     <div id="bottom-aquarium-container">
       <div id="bottom-aquarium2">
-            <div id="log">
+            <div id="results">
               <h1>Experiment Notes</h1>
-              <div class="current">Started at 82 degrees F, .04% carbon dioxide, normal food levels, and medium light.</div>
-              <div id="results">
-
-              </div>
-              <br><div id="instructions">Change a control and press "start" to see what happens to Big Red.</div>
+              <div class="current">Started at 82 degrees F, .04% carbon dioxide, medium food levels, and medium light.</div>
+              <br><b><i>Change a control</i>  and press "start" to see what happens to Big Red.</b>
             </div>
       </div>
     </div>
@@ -66,6 +64,23 @@
         click the start button to see how Big Red reacts!</p>
     </li>
     </ol>
+
+    <!-- The Modal -->
+ <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">x</span>
+    <h3>Warning</h3>
+    Make sure to change a control before you press start!
+    <br>
+    <button class="close-button">Okay</button>
+    <br>
+  </div>
+
+</div>
+
+
     <!--run the game-->
     <script>init();</script>
     <!-- Run the popup plugin -->
@@ -87,5 +102,6 @@
       });
     });
   </script>
+
   </body>
 </html>

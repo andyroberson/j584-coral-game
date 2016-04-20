@@ -231,26 +231,29 @@ function updateValues(activeControl) {
    //coral high coral happy
        if (carbon < .03) {
          experiment++;
-         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
+         $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
          + "<br>After 30 days in this water, you can definitely tell that Big Red bleached. Though lower acidity is usually better, Big Red bleached because he doesn't handle drastic changes (such as the change in carbon dioxide) well."
          );
+              $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
          startClicked = false;
          fullBleach();
        }
 
        if (carbon == .03) {
          experiment++;
-         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+         $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
          + "<br>This percentage of carbon dioxide is close to the level of ocean acidity prior to the industrial revolution, which was .028%."
          + " Lower acidity, like what you selected, is almost always better, but Big Red still bleached a little because he's sensitive to change.");
+              $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
          startClicked = false;
          lowBleach();
        }
 
        if (carbon == .04) {
          experiment++;
-         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy.</b>"
+         $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red is healthy.</b>"
          + "<br>This was the recommended carbon dioxide setting for Big Red, and he didn't bleach.");
+         $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
          startClicked = false;
          coralReset();
        }
@@ -258,18 +261,20 @@ function updateValues(activeControl) {
        //carbon rising, sad coral
        if ((carbon > .04) && (carbon < .06)) {
          experiment++;
-         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+         $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
          + "<br>This CO2 level is too high. This is what scientists predict the ocean's acidity will be like in a century if humans continue become more environmentally conscious and slow their pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
          + "but there is hope that he would adapt if this number increased slowly over more time.");
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
          startClicked = false;
          lowBleach();
        }
 
        if (carbon >= .06) {
          experiment++;
-         $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
+         $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
          +  "<br>This CO2 level is way too high! This is what scientists predict the ocean's acidity will be like in a century if humans continue at their current pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
           + "but there is hope that he would adapt if this number increased slowly over more time and he could slowly get used to the change");
+          $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
           startClicked = false;
          fullBleach();
 
@@ -283,25 +288,28 @@ function updateValues(activeControl) {
    if (degrees <= 75) {
      experiment++;
       $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
-      + "<br>Big Red is very picky about temperatures and doesn't like to be too cold. " );
+      + "<br><br>Big Red is very picky about temperatures and doesn't like to be too cold." );
+      $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
       startClicked = false;
      fullBleach();
    }
 
    //coral bleach
-   if ((degrees > 75) && (degrees < 81)) {
+   if ((degrees > 75) && (degrees < 82)) {
      experiment++;
-      $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached a little</b>"
+      $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached a little</b>"
       + "<br>Big Red was a bit too cold, and after 30 days in water of this temperature, he started bleaching." );
+      $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
       startClicked = false;
-     lowBleach();
+      lowBleach();
    }
 
    //coral high coral happy
    if (degrees == 82) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red is healthy</b>"
      + "<br>This is the recommended temperature for Big Red and he stayed happy in water at this temperature." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
      startClicked = false;
      coralReset();
    }
@@ -309,16 +317,20 @@ function updateValues(activeControl) {
    //coral high coral happy
    if ((degrees > 82) && (degrees < 89)) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached</b>"
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached</b>"
      + "<br>The water was too warm for Big Red, and he bleached during your 30-day lab experiment." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
+
      startClicked = false;
      highBleach();
    }
 
    if (degrees > 88) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached</b>"
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached</b>"
      + "<br>Big Red was really hot in water of this temperature and was very bleached after 30 days of living in it." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
+
      startClicked = false;
      fullBleach();
    }
@@ -328,17 +340,19 @@ function updateValues(activeControl) {
  function detectLightLevel() {
    if (lightSwitch.value < 25) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached a bit</b>"
-     + "<br>Big Red needs light for photosynthesis, which is a source of nutrition. Feeling hungry makes him start to bleach." );
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red bleached a lot</b>"
+     + "<br>Big Red needs light for photosynthesis, which is a source of nutrition. Turning the light off starves him and makes him bleach." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
      startClicked = false;
-     lowBleach();
+     fullBleach();
      stage.update();
    }
 
    if (lightSwitch.value >= 25 && lightSwitch.value < 75) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red didn't bleach!/b>"
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red didn't bleach!/b>"
      + "<br>This is the recommended setting for light and Big Red didn't bleach." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
      startClicked = false;
      coralReset();
      stage.update();
@@ -347,8 +361,9 @@ function updateValues(activeControl) {
    //light switch high, show bright light
    else if (lightSwitch.value >= 75 && lightSwitch.value < 101) {
      experiment++;
-     $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
+     $( "#results" ).append("<br><br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
      + "<br>Extra light means extra food for Big Red since he uses it for photosynthesis, so it may seem strange that he bleached. This happened because the extra heat from the light made him too hot." );
+     $("#results").animate({ scrollTop: $("#results")[0].scrollHeight}, 1000);
      startClicked = false;
      lowBleach();
      stage.update();
