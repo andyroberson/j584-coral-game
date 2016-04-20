@@ -97,6 +97,9 @@ var experiment = 0;
     //TODO - change the above create functions to START?
 }
 //end init function
+if (experiment > 0) {
+  $( ".current" ).css({"display": "none"});
+}
 //fully bleach coral
 function fullBleach() {
    coral2.gotoAndPlay("bleach");
@@ -164,6 +167,9 @@ function updateValues(activeControl) {
    littleFood = false;
    moreFood = false;
    mostFood = false;
+   foodButton.alpha = .7;
+   foodButton2.alpha = .7;
+   foodButton3.alpha = .7;
  }
 
  function findActiveControl() {
@@ -205,7 +211,7 @@ function updateValues(activeControl) {
        }
 
        for (var i = 0; i < foodArr; i ++) {
-         foodArr[i].x = 200;
+         foodArr[i].x = 0;
          foodArr[i].y = 0;
        }
 
@@ -249,7 +255,7 @@ function updateValues(activeControl) {
        if ((carbon > .04) && (carbon < .06)) {
          experiment++;
          $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red started bleaching!</b>"
-         + "<br>This CO2 level is too high. This is what scientists predict the ocean’s acidity will be like in a century if humans continue become more environmentally conscious and slow their pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
+         + "<br>This CO2 level is too high. This is what scientists predict the ocean's acidity will be like in a century if humans continue become more environmentally conscious and slow their pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
          + "but there is hope that he would adapt if this number increased slowly over more time.");
          startClicked = false;
          lowBleach();
@@ -258,7 +264,7 @@ function updateValues(activeControl) {
        if (carbon >= .06) {
          experiment++;
          $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
-         +  "<br>This CO2 level is way too high! This is what scientists predict the ocean’s acidity will be like in a century if humans continue at their current pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
+         +  "<br>This CO2 level is way too high! This is what scientists predict the ocean's acidity will be like in a century if humans continue at their current pollution rate. Your 30-day lab setting was too extreme and shows that pollution is generally bad for Big Red, "
           + "but there is hope that he would adapt if this number increased slowly over more time and he could slowly get used to the change");
           startClicked = false;
          fullBleach();
@@ -273,7 +279,7 @@ function updateValues(activeControl) {
    if (degrees <= 75) {
      experiment++;
       $( "#results" ).append("<br>Experiment " + experiment + ": <b>Big Red bleached!</b>"
-      + "<br>Big Red is very picky about temperatures and doesn’t like to be too cold. " );
+      + "<br>Big Red is very picky about temperatures and doesn't like to be too cold. " );
       startClicked = false;
      fullBleach();
    }

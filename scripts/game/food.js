@@ -16,6 +16,7 @@ function createFood() {
       foodButton.x = 14;
       foodButton.y = 26;
       foodButton.cursor = "pointer";
+      foodButton.alpha = .7;
       // foodButton.width = tankWidth / 10;
       // foodButton.height = menuHeight / 2;
       // foodButton.setBounds(foodButton.x, foodButton.y, foodButton.width, foodButton.height);
@@ -24,11 +25,13 @@ var foodButton2 = new createjs.Bitmap("assets/shrimp-button2.png");
      foodButton2.x = 14;
      foodButton2.y = 73;//(switchContainer.height + 10 + 20);
      foodButton2.cursor = "pointer";
+     foodButton2.alpha = .7;
 
 var foodButton3 = new createjs.Bitmap("assets/shrimp-button3.png");
      foodButton3.x = 14;
      foodButton3.y = 120;//(switchContainer.height + 10 + 20);
      foodButton3.cursor = "pointer";
+     foodButton3.alpha = .7;
 
      littleFood = false;
      moreFood = false;
@@ -61,6 +64,9 @@ foodButton.on("click", function (evt) {
       resetTemp();
 
       if (evt.nativeEvent.button >= 0) {
+          foodButton.alpha = 1;
+          foodButton2.alpha = .7;
+          foodButton3.alpha = .7;
           littleFood = true;
           moreFood = false;
           mostFood = false;
@@ -80,6 +86,9 @@ foodButton2.on("click", function (evt) {
       resetTemp();
 
       if (evt.nativeEvent.button >= 0) {
+        foodButton2.alpha = 1;
+        foodButton.alpha = .7;
+        foodButton3.alpha = .7;
           moreFood = true;
           littleFood = false;
           mostFood = false;
@@ -98,6 +107,9 @@ foodButton3.on("click", function (evt) {
       resetTemp();
 
       if (evt.nativeEvent.button >= 0) {
+        foodButton3.alpha = 1;
+        foodButton2.alpha = .7;
+        foodButton.alpha = .7;
           mostFood = true;
           littleFood = false;
           moreFood = false;
@@ -115,8 +127,8 @@ stage.update();
     function moveFood() {
 
       if(tick > 100) {
-        xT = Math.ceil(Math.random()* tankWidth);
-        yT = Math.ceil(Math.random()* tankHeight * 4/5);
+        xT = Math.ceil(Math.random()* tankWidth * (3/5));
+        yT = Math.ceil(Math.random()* tankHeight * 3/5);
         tick = 0;
       }
 
