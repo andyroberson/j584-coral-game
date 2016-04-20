@@ -30,6 +30,9 @@ function createLight() {
           lightSwitch.value = 0;
     			console.log("light off");
           light.alpha = 0;
+
+          lowBleach();
+
           stage.update();
     		}
 
@@ -40,6 +43,9 @@ function createLight() {
           lightSwitch.value = 50;
     			console.log("medium");
           light.alpha = .5;
+
+          coralReset();
+
           stage.update();
     		}
 
@@ -49,6 +55,9 @@ function createLight() {
           lightSwitch.value = 100;
           console.log("high");
           light.alpha = 1;
+
+          lowBleach();
+
           stage.update();
         }
 	  }

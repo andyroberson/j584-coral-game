@@ -171,6 +171,28 @@ function createCoral() {
                  coral2.setBounds(coral2.x, coral2.y, coral2.width, coral2.height);
                  console.log("coral 2 bounds: " + coral2.getBounds());
 
+        //  //fully bleach coral
+        //  function fullBleach() {
+       // 			coral2.gotoAndPlay("bleach");
+       // 		}
+         //
+        //  //fully bleach coral
+        //   function highBleach() {
+        //      coral2.gotoAndPlay("bleach-19");
+        //   }
+         //
+        //   //partially bleach coral
+        //   function lowBleach() {
+        //     coral2.gotoAndPlay("bleach-13");
+        //   }
+         //
+        //   //reset coral to happy coral
+        //   function coralReset() {
+        //     coral2.gotoAndPlay("stare");
+        //   }
+
+
+
     // coralIntersect = new createjs.Bitmap("assets/coral-1.png");
     //     coralIntersect.x = (tankWidth*(11/17));
     //     coralIntersect.y = (tankHeight*(8/11));

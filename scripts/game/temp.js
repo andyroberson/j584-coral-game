@@ -30,7 +30,7 @@ function createTemp() {
       screenWidth = screenContainer.width;
       screenContainer.setBounds(screenContainer.x, screenContainer.y, screenContainer.width, screenContainer.height);
 
-  var degrees = 70.0;
+  var degrees = 82;
 
   //http://www.createjs.com/docs/easeljs/classes/Graphics.html#method_drawPolyStar
   //drawPolyStar(x, y, radius, sides, pointsize, angle)
@@ -39,11 +39,20 @@ function createTemp() {
 
   //increasing the temperature
   upArrow.addEventListener("click", function (evt) {
-      degrees = degrees + .10;
-      degrees = Math.round(degrees * 100) / 100;
+      degrees = degrees + 1;
+      // degrees = Math.round(degrees * 100) / 100;
       temperature.text = degrees;
 
-      //TODO CHANGE GRAPHICS OF CORAL DEPENDING ON HOW MUCH DEGREES IS
+      //coral high coral happy
+      if (degrees == 82) {
+        coralReset();
+      }
+
+      //coral high coral happy
+      if (degrees > 82) {
+        coralReset();
+      }
+
       stage.update();
   });
 
@@ -51,9 +60,19 @@ function createTemp() {
   downArrow.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(10/12)), (tempWidth*(1/6)), 3, 0, 90);
 
   downArrow.addEventListener("click", function (evt) {
-    degrees = degrees - .1;
-    degrees = Math.round(degrees * 100) / 100;
+    degrees = degrees - 1;
+    // degrees = Math.round(degrees * 100) / 100;
     temperature.text = degrees;
+
+    //if the degrees are super low, coral bleach
+    if (degrees <= 75) {
+      fullBleach();
+    }
+
+    //coral bleach
+    if ((degrees > 75) && (degrees < 81)) {
+      lowBleach();
+    }
     stage.update();
   });
 

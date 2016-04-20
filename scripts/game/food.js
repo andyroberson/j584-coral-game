@@ -115,19 +115,16 @@ stage.update();
 function makeNewFood() {
       if (littleFood == true) {
             foodArr.push(new createjs.Bitmap("assets/shrimp-sm.gif"));
-            resetFoodValues();
             console.log("We just added a little bit of food");
       }
 
       if (moreFood == true) {
             foodArr.push(new createjs.Bitmap("assets/shrimp-md.gif"));
-            resetFoodValues();
             console.log("We just added more food");
       }
 
       if (mostFood == true) {
             foodArr.push(new createjs.Bitmap("assets/shrimp-lg.gif"));
-            resetFoodValues();
             console.log("We just added the MOST food");
       }
 
@@ -142,7 +139,7 @@ function makeNewFood() {
       tankContainer.addChild(foodArr[i]);
       stage.update();
 
-      }
+  }
 
     //Update stage will render next frame this is for animating food
     createjs.Ticker.framerate = 40;
@@ -181,10 +178,16 @@ function makeNewFood() {
 
           foodCollision2 = testCollision(coral2,foodArr[i]);
           if (foodCollision2 == true) {
+
             tankContainer.removeChild(foodArr[i]);
             foodArr.splice(foodArr[i], 1);
             console.log("coral 2 ate the food");
 
+            if (littleFood == true) {
+              fullBleach();
+            }
+            
+            resetFoodValues();
             stage.update();
           }
 

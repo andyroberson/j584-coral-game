@@ -38,6 +38,7 @@ var foodArr = [];
 var foodArr2 = [];
 var foodArr3 = [];
 
+
   function init() {
     console.log("init");
     stage = new createjs.Stage("gameCanvas");
@@ -83,6 +84,25 @@ var foodArr3 = [];
     //TODO - change the above create functions to START?
 }
 //end init function
+//fully bleach coral
+function fullBleach() {
+   coral2.gotoAndPlay("bleach");
+ }
+
+//fully bleach coral
+ function highBleach() {
+    coral2.gotoAndPlay("bleach-19");
+ }
+
+ //partially bleach coral
+ function lowBleach() {
+   coral2.gotoAndPlay("bleach-13");
+ }
+
+ //reset coral to happy coral
+ function coralReset() {
+   coral2.gotoAndPlay("stare");
+ }
 
 //make things draggable make anything draggable with makeDraggable(yourItemHere);
 function makeDraggable(o) {

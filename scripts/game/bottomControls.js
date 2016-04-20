@@ -24,28 +24,28 @@ controlsMenu = new createjs.Container();
 
      controlsMenuBackground.setBounds( controlsMenuBackground.x,  controlsMenuBackground.y,  controlsMenuBackground.width,  controlsMenuBackground.height);
 
-//container to log all actions
- actionLog = new createjs.Container();
-     actionLog.x = (tankContainer.width/4)
-     actionLog.y = 20;
-     actionLog.width = (tankContainer.width/2);
-     actionLog.height = (menuHeight - 40);
-     actionLog.setBounds(actionLog.x, actionLog.y, actionLog.width, actionLog.height);
-
-//actionLog background
-actionLogBG = new createjs.Shape();
-    actionLogBG.graphics.drawRect(0, 0, actionLog.width, actionLog.height);
-
-var logTitle = new createjs.Text();
-    logTitle.text = "Notes"
-    logTitle.color = "#666";
-    logTitle.font = "bold 20px arial";
-    logTitle.x = (actionLog.width/3 + 10);
-    logTitle.y = 5;
-
-    $( "#bottom-aquarium" ).css({width: controlsMenu.width});
-    $( "#test" ).css({top: controlsMenu.y + 60, left: logTitle.x + 270, width: actionLog.width});
-    $( "#test" ).append( "the height is " + tankHeight);
+// //container to log all actions
+//  actionLog = new createjs.Container();
+//      actionLog.x = (tankContainer.width/4)
+//      actionLog.y = 20;
+//      actionLog.width = (tankContainer.width/2);
+//      actionLog.height = (menuHeight - 40);
+//      actionLog.setBounds(actionLog.x, actionLog.y, actionLog.width, actionLog.height);
+//
+// //actionLog background
+// actionLogBG = new createjs.Shape();
+//     actionLogBG.graphics.drawRect(0, 0, actionLog.width, actionLog.height);
+//
+// var logTitle = new createjs.Text();
+//     logTitle.text = "Notes"
+//     logTitle.color = "#666";
+//     logTitle.font = "bold 20px arial";
+//     logTitle.x = (actionLog.width/3 + 10);
+//     logTitle.y = 5;
+//
+//     $( "#bottom-aquarium" ).css({width: controlsMenu.width});
+//     $( "#test" ).css({top: controlsMenu.y + 60, left: logTitle.x + 270, width: actionLog.width});
+//     $( "#test" ).append( "the height is " + tankHeight);
 
 
      makeBottomControls();
