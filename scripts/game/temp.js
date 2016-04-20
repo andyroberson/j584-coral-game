@@ -49,7 +49,7 @@ function createTemp() {
       resetCarbon();
       console.log(activeControl);
 
-      detectTemp();
+      findActiveControl();
       stage.update();
   });
 
@@ -67,36 +67,10 @@ function createTemp() {
         resetCarbon();
         console.log(activeControl);
 
-        detectTemp();
+        findActiveControl();
         stage.update();
       });
 
-  function detectTemp() {
-    //if the degrees are super low, coral bleach
-    if (degrees <= 75) {
-      fullBleach();
-    }
-
-    //coral bleach
-    if ((degrees > 75) && (degrees < 81)) {
-      lowBleach();
-    }
-
-    //coral high coral happy
-    if (degrees == 82) {
-      coralReset();
-    }
-
-    //coral high coral happy
-    if ((degrees > 82) && (degrees < 89)) {
-      lowBleach();
-    }
-
-    if (degrees > 88) {
-      fullBleach();
-    }
-
-  }
   //creating and styling temperature text
   temperature = new createjs.Text();
       temperature.text = (degrees);

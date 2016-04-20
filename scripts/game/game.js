@@ -160,25 +160,19 @@ function updateValues(activeControl) {
  }
 
  function findActiveControl() {
-   if (activeControl == "light") {
-     startLight = true;
-     startTemp = false;
-     startCarbon = false;
-     startFood = false;
+   if ((activeControl == "light") && startClicked == true) {
+     detectLightLevel();
+     startClicked = false;
    }
 
-   if (activeControl == "temp") {
-     startTemp = true;
-     startLight = false;
-     startCarbon = false;
-     startFood = false;
+   if ((activeControl == "temp") && startClicked == true) {
+     detectTemp();
+     startClicked = false;
    }
 
-   if (activeControl == "carbon") {
-     startCarbon = true;
-     startTemp = false;
-     startLight = false;
-     startFood = false;
+   if ((activeControl == "carbon") && startClicked == true) {
+     detectCarbon();
+     startClicked = false;
    }
 
    if ((activeControl == "food") && startClicked == true) {
@@ -219,6 +213,80 @@ function updateValues(activeControl) {
        stage.update();
 
  };
+
+ function detectCarbon() {
+   //coral high coral happy
+       if (carbon < .03) {
+         fullBleach();
+       }
+
+       if (carbon == .03) {
+         lowBleach();
+       }
+
+       if (carbon == .04) {
+         coralReset();
+       }
+
+       //coral high coral happy
+       if ((carbon > .04) && (carbon < .06)) {
+         lowBleach();
+       }
+
+       if (carbon == .06) {
+         fullBleach();
+       }
+
+       if (carbon > .06) {
+         fullBleach();
+       }
+ }
+
+
+ function detectTemp() {
+   //if the degrees are super low, coral bleach
+   if (degrees <= 75) {
+     fullBleach();
+   }
+
+   //coral bleach
+   if ((degrees > 75) && (degrees < 81)) {
+     lowBleach();
+   }
+
+   //coral high coral happy
+   if (degrees == 82) {
+     coralReset();
+   }
+
+   //coral high coral happy
+   if ((degrees > 82) && (degrees < 89)) {
+     lowBleach();
+   }
+
+   if (degrees > 88) {
+     fullBleach();
+   }
+
+ }
+
+ function detectLightLevel() {
+   if (lightSwitch.value < 25) {
+     lowBleach();
+     stage.update();
+   }
+
+   if (lightSwitch.value >= 25 && lightSwitch.value < 75) {
+     coralReset();
+     stage.update();
+   }
+
+   //light switch high, show bright light
+   else if (lightSwitch.value >= 75 && lightSwitch.value < 101) {
+     lowBleach();
+     stage.update();
+   }
+ }
 
 //make things draggable make anything draggable with makeDraggable(yourItemHere);
 function makeDraggable(o) {

@@ -46,8 +46,8 @@ function createCarbon() {
           resetTemp();
           console.log(activeControl);
 
-
-          detectCarbon();
+          
+          findActiveControl();
           stage.update();
       });
 
@@ -67,37 +67,9 @@ function createCarbon() {
         console.log(activeControl);
 
 
-        detectCarbon();
+        findActiveControl();
         stage.update();
       });
-
-      function detectCarbon() {
-        //coral high coral happy
-            if (carbon < .03) {
-              fullBleach();
-            }
-
-            if (carbon == .03) {
-              lowBleach();
-            }
-
-            if (carbon == .04) {
-              coralReset();
-            }
-
-            //coral high coral happy
-            if ((carbon > .04) && (carbon < .06)) {
-              lowBleach();
-            }
-
-            if (carbon == .06) {
-              fullBleach();
-            }
-
-            if (carbon > .06) {
-              fullBleach();
-            }
-      }
 
       //creating and styling carbondisplay text
       carbonDisplay = new createjs.Text();

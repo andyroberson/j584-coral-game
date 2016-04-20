@@ -30,30 +30,26 @@ function createLight() {
         resetCarbon();
         //ßcontrol.log(activeControl);
 
-        //if slider light switch is below 25, keep it off
-    		if (lightSwitch.value < 25) {
+        if (lightSwitch.value < 25) {
           //snap to low
           lightSwitch.value = 0;
-    			console.log("light off");
+          console.log("light off");
           light.alpha = 0;
 
-          lowBleach();
-
+          findActiveControl();
           stage.update();
-    		}
-
+        }
 
         //light switch in the middle, make it middle light
-    		else if (lightSwitch.value >= 25 && lightSwitch.value < 75) {
+        else if (lightSwitch.value >= 25 && lightSwitch.value < 75) {
           //snap to medium
           lightSwitch.value = 50;
-    			console.log("medium");
+          console.log("medium");
           light.alpha = .5;
 
-          coralReset();
-
+          findActiveControl();
           stage.update();
-    		}
+        }
 
         //light switch high, show bright light
         else if (lightSwitch.value >= 75 && lightSwitch.value < 101) {
@@ -62,16 +58,13 @@ function createLight() {
           console.log("high");
           light.alpha = 1;
 
-          lowBleach();
-
+          findActiveControl();
           stage.update();
         }
-	  }
 
-    function resetLight() {
-      lightSwitch.value = 50;
-      updateEffect(lightSwitch.value);
-    }
+
+        //if slider light switch is below 25, keep it off
+	  }
 
     makeLight();
 
