@@ -28,19 +28,20 @@ function createCarbon() {
       // var carbonScreen = new createjs.Shape();
       //     carbonScreen.graphics.beginFill("#EEE").drawRect(screenContainer2.x, screenContainer2.y, screenWidth2, screenHeight2);
 
-      var carbon = 7;
+      var carbon = .04;
 
       var upArrow2 = new createjs.Shape();
       upArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(5/13)), (tempWidth*(1/6)), 3, 0, -90);
 
       //increasing the temperature
       upArrow2.addEventListener("click", function (evt) {
-          carbon = carbon + 1;
+          carbon = carbon + .01;
           carbon = Math.round(carbon * 100) / 100;
           carbonDisplay.text = carbon;
 
-          //TODO add limit to adding / subtracting (if under 20 etc)?
-          //TODO CHANGE GRAPHICS OF CORAL DEPENDING ON CARBON AMOUNT
+
+          detectCarbon();
+
           stage.update();
       });
 
@@ -48,13 +49,41 @@ function createCarbon() {
       downArrow2.graphics.beginFill("#fff").drawPolyStar((tempWidth*(5/11)), (tempHeight*(14/17)), (tempWidth*(1/6)), 3, 0, 90);
 
       downArrow2.addEventListener("click", function (evt) {
-        carbon = carbon - 1;
+        carbon = carbon - .01;
         carbon = Math.round(carbon * 100) / 100;
         carbonDisplay.text = carbon;
+        detectCarbon();
 
-        //TODO CHANGE GRAPHICS OF CORAL DEPENDING ON CARBON AMOUNT
         stage.update();
       });
+
+      function detectCarbon() {
+        //coral high coral happy
+            if (carbon < .03) {
+              fullBleach();
+            }
+
+            if (carbon == .03) {
+              lowBleach();
+            }
+
+            if (carbon == .04) {
+              coralReset();
+            }
+
+            //coral high coral happy
+            if ((carbon > .04) && (carbon < .06)) {
+              lowBleach();
+            }
+
+            if (carbon == .06) {
+              fullBleach();
+            }
+
+            if (carbon > .06) {
+              fullBleach();
+            }
+      }
 
       //creating and styling carbondisplay text
       var carbonDisplay = new createjs.Text();
