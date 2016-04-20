@@ -76,8 +76,12 @@ function createTemp() {
     }
 
     //coral high coral happy
-    if (degrees > 82) {
-      coralReset();
+    if ((degrees > 82) && (degrees < 89)) {
+      lowBleach();
+    }
+
+    if (degrees > 88) {
+      fullBleach();
     }
 
   }

@@ -62,6 +62,8 @@ function createLight() {
         }
 	  }
 
+    // function resetLight()
+
     makeLight();
 
     function makeLight() {

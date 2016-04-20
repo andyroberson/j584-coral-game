@@ -94,12 +94,12 @@ function createCarbon() {
           carbonDisplay.y = (screenHeight2 * (5/9));
 
       //creating and styling F in farenheit
-      var carbonUnit = new createjs.Text();
-          carbonUnit.text = "PH"
-          carbonUnit.color = "#fff";
-          carbonUnit.font = "bold 10px arial";
-          carbonUnit.x = (screenWidth2 * (10/13));
-          carbonUnit.y = (screenHeight2 * (5/9));
+      // var carbonUnit = new createjs.Text();
+      //     carbonUnit.text = "PH"
+      //     carbonUnit.color = "#fff";
+      //     carbonUnit.font = "bold 10px arial";
+      //     carbonUnit.x = (screenWidth2 * (10/13));
+      //     carbonUnit.y = (screenHeight2 * (5/9));
 
       makeCarbon();
 
@@ -111,7 +111,7 @@ function createCarbon() {
           carbonContainer.addChild(downArrow2);
           // screenContainer2.addChild(carbonScreen);
           screenContainer2.addChild(carbonDisplay);
-          screenContainer2.addChild(carbonUnit);
+          // screenContainer2.addChild(carbonUnit);
           stage.update();
       }
 
