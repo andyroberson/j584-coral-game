@@ -199,5 +199,7 @@ function createCoral() {
             // stage.addChild(coralIntersect);
             stage.addChild(coral2);
             stage.update();
+            createjs.Ticker.timingMode = createjs.Ticker.RAF;
+            createjs.Ticker.addEventListener("tick", stage);
       }
 }

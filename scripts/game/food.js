@@ -114,19 +114,19 @@ stage.update();
 //add appropriate food image based on which value is true (which is set depending on which button was clicked)
 function makeNewFood() {
       if (littleFood == true) {
-            foodArr.push(new createjs.Bitmap("assets/test-shrimp.jpg"));
+            foodArr.push(new createjs.Bitmap("assets/shrimp-sm.gif"));
             resetFoodValues();
             console.log("We just added a little bit of food");
       }
 
       if (moreFood == true) {
-            foodArr.push(new createjs.Bitmap("assets/test-fish.png"));
+            foodArr.push(new createjs.Bitmap("assets/shrimp-md.gif"));
             resetFoodValues();
             console.log("We just added more food");
       }
 
       if (mostFood == true) {
-            foodArr.push(new createjs.Bitmap("assets/test-whale.png"));
+            foodArr.push(new createjs.Bitmap("assets/shrimp-lg.gif"));
             resetFoodValues();
             console.log("We just added the MOST food");
       }

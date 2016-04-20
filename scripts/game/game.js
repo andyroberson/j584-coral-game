@@ -60,7 +60,7 @@ var foodArr3 = [];
         console.log(tankContainer.getBounds() + "and the height is" + tankHeight);
 
     //tank background image
-    tankBackground = new createjs.Bitmap("assets/tank.png");
+    tankBackground = new createjs.Bitmap("assets/tank-3.png");
         tankBackground.x = -12;
         tankBackground.y = 0;
         tankBackground.width = tankWidth;
