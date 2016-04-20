@@ -43,16 +43,7 @@ function createTemp() {
       // degrees = Math.round(degrees * 100) / 100;
       temperature.text = degrees;
 
-      //coral high coral happy
-      if (degrees == 82) {
-        coralReset();
-      }
-
-      //coral high coral happy
-      if (degrees > 82) {
-        coralReset();
-      }
-
+      detectTemp();
       stage.update();
   });
 
@@ -64,6 +55,11 @@ function createTemp() {
     // degrees = Math.round(degrees * 100) / 100;
     temperature.text = degrees;
 
+    detectTemp();
+    stage.update();
+  });
+
+  function detectTemp() {
     //if the degrees are super low, coral bleach
     if (degrees <= 75) {
       fullBleach();
@@ -73,9 +69,18 @@ function createTemp() {
     if ((degrees > 75) && (degrees < 81)) {
       lowBleach();
     }
-    stage.update();
-  });
 
+    //coral high coral happy
+    if (degrees == 82) {
+      coralReset();
+    }
+
+    //coral high coral happy
+    if (degrees > 82) {
+      coralReset();
+    }
+
+  }
   //creating and styling temperature text
   var temperature = new createjs.Text();
       temperature.text = (degrees);
