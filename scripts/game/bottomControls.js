@@ -37,6 +37,7 @@ startButton = new createjs.Shape();
      startButton.width = buttonContainer.width;
      startButton.height = buttonContainer.height;
      startButton.graphics.beginFill("Teal").beginStroke("White").drawRect(startButton.x, startButton.y, startButton.width, startButton.height);
+     startButton.cursor = "pointer";
 
 buttonText = new createjs.Text();
       buttonText.text = "START";

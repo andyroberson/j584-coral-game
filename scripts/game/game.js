@@ -70,6 +70,7 @@ var foodArr3 = [];
 
     stage.addChild(tankContainer);
     tankContainer.addChild(tankBackground);
+    stage.enableMouseOver();
     stage.update();
 
     createCoral();
